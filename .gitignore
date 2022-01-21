@@ -1,0 +1,7 @@
+venv.sh
+.venv
+env.py
+*.sqlite3
+*.pyc
+**__pycache__/
+.vscode
