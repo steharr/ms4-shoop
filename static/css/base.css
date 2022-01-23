@@ -1,0 +1,31 @@
+/* Home */
+.home-image {
+    background-image: url('/media/homepage.jpg');
+    background-size: cover;
+}
+
+
+
+/* utility classes */
+.black-outline {
+    border: 1px solid black;
+}
+
+/* Sticky Footer Setup, Taken from: https://css-tricks.com/couple-takes-sticky-footer/ */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
