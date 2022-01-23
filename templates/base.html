@@ -46,42 +46,66 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <!-- Site Name-->
+                <a class="navbar-brand" href="#">Shoop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <!--Navigation Items-->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <!-- home -->
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
+
+                        <!-- account options -->
+                        {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link active" aria-current="page" href="#">Product Management</a>
                         </li>
+                        {% endif %}
+                        {% endif %}
+
+                        <!-- all -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Browse</a>
+                        </li>
+                        <!-- by gender -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Mens</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Womens</a>
+                        </li>
+
+                        <!-- by brands -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                Brands
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Addidas</a></li>
+                                <li><a class="dropdown-item" href="#">Nike</a></li>
+                                <li><a class="dropdown-item" href="#">Doc Marten</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled">Disabled</a>
-                        </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+
+                    <!-- Search, Profile and Cart -->
+                    <div class="d-flex justify-content-around">
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                        <a class="p-2" href=""><i class="fas fa-user fa-lg"></i></a>
+                        <a class="p-2" href=""><i class="fas fa-shopping-cart fa-lg"></i></a>
+                    </div>
                 </div>
             </div>
         </nav>
