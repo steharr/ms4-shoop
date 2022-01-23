@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    # custom apps
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -56,9 +59,15 @@ ROOT_URLCONF = 'shoop.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'BACKEND':
+        'django.template.backends.django.DjangoTemplates',
+        # template directories
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),  # root
+            os.path.join(BASE_DIR, 'templates', 'allauth'),  # custom allauth
+        ],
+        'APP_DIRS':
+        True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
