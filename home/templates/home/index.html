@@ -2,18 +2,17 @@
 {% load static %}
 
 {% block content %}
-
-<div class="content">
-    <div class="row h-100 align-items-center">
-        <div class="col-4 h-100 align-items-center">
-            <div class="mx-auto w-50 black-outline">
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-lg-4 d-flex justify-content-center align-items-center home-image-md">
+            <div class="p-4 rounded-3 bg-light">
                 <h1>Shoop</h1>
+                <p>Welcome to the store!</p>
                 <a class="btn btn-primary" href="">Browse our collections...</a>
             </div>
         </div>
-        <div class="col-8 h-100 home-image">
+        <div class="d-none d-lg-flex col-lg-8 home-image-lg">
         </div>
     </div>
 </div>
-
 {% endblock %}

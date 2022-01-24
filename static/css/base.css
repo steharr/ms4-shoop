@@ -1,31 +1,30 @@
-/* Home */
-.home-image {
-    background-image: url('/media/homepage.jpg');
-    background-size: cover;
-}
-
-
-
-/* utility classes */
-.black-outline {
-    border: 1px solid black;
-}
-
-/* Sticky Footer Setup, Taken from: https://css-tricks.com/couple-takes-sticky-footer/ */
-html,
-body {
+/* base */
+html {
     height: 100%;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
 }
 
-.content {
-    flex: 1 0 auto;
+/* home */
+.home-image-md {
+    background-image: url('/media/homepage.jpg');
+    background-size: cover;
 }
 
-.footer {
-    flex-shrink: 0;
+@media screen and (min-width: 992px) {
+    .home-image-md {
+        background-image: none;
+    }
+
+    .home-image-lg {
+        background-image: url('/media/homepage.jpg');
+        background-size: cover;
+    }
+}
+
+/* utility classes */
+.black-outline {
+    border: 1px solid black;
 }
