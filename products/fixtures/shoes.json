@@ -1,0 +1,16 @@
+[
+    {
+        "pk": 1,
+        "model": "products.shoe",
+        "fields": {
+            "sku": "SHOOP20220101",
+            "category": 1,
+            "gender": "m",
+            "brand": 1,
+            "name": "Nike Air Max 90",
+            "description": "The Air Max 90 is an essential for any Nike collection. Constructed from a mix of leather, synthetic and textile uppers in bold colours and safari-pattern graphics. Featuring classic Air Max branding, padded collars, a foam midsole, sitting on a rubber Waffle outsole with a visible Max air unit.",
+            "image": "nike-airmax90.png",
+            "price": 50.00
+        }
+    }
+]
