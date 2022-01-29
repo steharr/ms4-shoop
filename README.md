@@ -13,15 +13,32 @@ The **five planes of user experience design** developed by Jesse James Garrett w
 
 <!-- descript of users -->
 
-<!-- 
+
 ### **User Stories**
 
 #### Site Owners
+1. As a site viewer, I want to browse products in the store
+2. As a site viewer, I want to view specific products in the store
+3. As a site viewer, I want to search for specific items by text
+4. As a site viewer, I want to search for specific items by category
+5. As a site viewer, I want to sort items in the store
+6. As a site viewer, I want to add products to a cart in the store
+7. As a site viewer, I want to purchase products in the cart
+8. As a site viewer, I want to review items in the store
+9. As a site viewer, I want to see other peoples reviews and what the overall score for an item is
+10. As a site viewer, I want to register a profile in the store
+11. As a site viewer, I want to be able to login to that profile in the store
+12. As a site viewer, I want to save my delivery details in my profile
+13. As a site viewer, I want to see my reviews in the profile section
 
 #### Site Viewers
- -->
-
-
+1. As I site owner, I want to edit specific products in the store
+2. As I site owner, I want to add new products to the store
+3. As I site owner, I want to update current products in the store
+4. As I site owner, I want to delete current products in the store
+5. As I site owner, I want to add Sale banners to the store
+6. As I site owner, I want to delete Sale banners to the store
+7. As I site owner, I want to update sale banners to the store
 
 <!-- ### **Scope Plane**
 To plan out the scope of the site, I compiled a list of features that were needed in order to satisify the user stories of the site. These were the features that I would need completed for a minimun viable product and ranked by order of importance. An additional group of ***Nice to have*** features were also compiled that if feasible could be targetted to further improve the overall experience of the site -->
