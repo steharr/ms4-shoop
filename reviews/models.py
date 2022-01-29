@@ -17,9 +17,6 @@ class Review(models.Model):
                              null=True,
                              blank=True,
                              on_delete=models.SET_NULL)
-    rating = models.DecimalField(decimal_places=1,
-                                 max_digits=2,
-                                 null=False,
-                                 blank=False)
+    rating = models.IntegerField(null=False, blank=False)
     details = models.TextField(null=False, blank=False)
     date = models.DateTimeField(null=False, blank=False, auto_now_add=True)

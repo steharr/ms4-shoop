@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load range %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- image -->
+        <div class="col-4">
+            <h5 class="text-center">{{shoe.name}}</h5>
+            <div class="d-flex justify-content-center">
+                <img src="../media/{{ shoe.image }}" class="img-fluid w-75" alt="{{ shoe.name }}">
+            </div>
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item">&euro; {{ shoe.price }}</li>
+                <li class="list-group-item">{{ shoe.brand|title }}</li>
+                <li class="list-group-item">{{ shoe.category|title }}</li>
+            </ul>
+        </div>
+        <div class="col-8 reviews">
+            {% if reviews %}
+            {% for review in reviews %}
+            <div class="card">
+                <div class="card-header d-flex justify-content-around">
+                    <div class="user-details">
+                        <strong>By:</strong>
+                        {{ review.user.email }}
+                    </div>
+                    <div class="review-rating">
+                        <div class="d-flex align-items-center pt-1">
+                            {% for star in 5|range %}
+                            {% if star <= review.rating %}
+                            <i class="fas fa-star"></i>
+                            {% else %}
+                            <i class="far fa-star"></i>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="review-date">
+                        {{ review.date|date:"d/m/Y" }}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ review.details }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>No reviews to show</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

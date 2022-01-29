@@ -5,9 +5,20 @@
         "fields": {
             "shoe": 1,
             "user": 1,
-            "rating": 5.0,
+            "rating": 4,
             "details": "a decent shoe",
             "date": "2021-04-01 12:00:55"
+            }
+    },
+    {
+        "pk": 2,
+        "model": "reviews.review",
+        "fields": {
+            "shoe": 1,
+            "user": 1,
+            "rating": 2,
+            "details": "not a decent shoe",
+            "date": "2021-01-01"
             }
     }
 ]
