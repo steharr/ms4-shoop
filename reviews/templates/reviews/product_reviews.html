@@ -5,17 +5,17 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <!-- image -->
         <div class="col-4">
             <h5 class="text-center">{{shoe.name}}</h5>
             <div class="d-flex justify-content-center">
-                <img src="../media/{{ shoe.image }}" class="img-fluid w-75" alt="{{ shoe.name }}">
+                <img src="../../media/{{ shoe.image }}" class="img-fluid w-75" alt="{{ shoe.name }}">
             </div>
             <ul class="list-group list-group-flush mb-3">
                 <li class="list-group-item">&euro; {{ shoe.price }}</li>
                 <li class="list-group-item">{{ shoe.brand|title }}</li>
                 <li class="list-group-item">{{ shoe.category|title }}</li>
             </ul>
+            <a class="btn btn-primary" href="{% url 'write_review' shoe.id %}" role="button">Write Review</a>
         </div>
         <div class="col-8 reviews">
             {% if reviews %}

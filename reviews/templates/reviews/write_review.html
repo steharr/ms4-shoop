@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load range %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h5 class="text-center">{{shoe.name}}</h5>
+            <div class="d-flex justify-content-center">
+                <img src="../../media/{{ shoe.image }}" class="img-fluid w-75" alt="{{ shoe.name }}">
+            </div>
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item">&euro; {{ shoe.price }}</li>
+                <li class="list-group-item">{{ shoe.brand|title }}</li>
+                <li class="list-group-item">{{ shoe.category|title }}</li>
+            </ul>
+        </div>
+        <div class="col-8">
+            <form action="{% url 'write_review' shoe.id %}" method="POST">
+                {% csrf_token %}
+                {{ review_form.shoe|as_crispy_field }}
+                {{ review_form.user|as_crispy_field }}
+                <div class="row">
+                    <div class="col-4">
+                        {{ review_form.rating|as_crispy_field }}
+                    </div>
+                    <div class="col-8" id="review stars">
+
+                    </div>
+                </div>
+                {{ review_form.details|as_crispy_field }}
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
