@@ -29,6 +29,12 @@ body {
     padding: .25rem .5rem .25rem .5rem;
 }
 
+/* detail */
+.rounded-element {
+    border: 1px solid grey;
+    border-radius: .25rem;
+}
+
 /* utility classes */
 .black-outline {
     border: 1px solid black;
@@ -39,7 +45,7 @@ body {
 }
 
 .text-sm-small {
-    font-size: .6rem;
+    font-size: .7rem;
 }
 
 @media screen and (min-width: 576px) {

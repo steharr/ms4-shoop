@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import Shoe
 
 
@@ -11,4 +11,20 @@ def all_shoes(request):
         'shoes': shoes,
     }
 
-    return render(request, 'products/browse.html', context)
+    template = 'products/browse.html'
+
+    return render(request, template, context)
+
+
+def shoe_detail(request, shoe_id):
+    """ A view to allow user to look at specific shoe """
+
+    shoe = get_object_or_404(Shoe, pk=shoe_id)
+
+    context = {
+        'shoe': shoe,
+    }
+
+    template = 'products/detail.html'
+
+    return render(request, template, context)

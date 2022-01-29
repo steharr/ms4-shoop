@@ -10,7 +10,7 @@
         <div class="col-6 col-md-4 col-lg-3 py-1">
             <div class="d-flex justify-content-center">
                 <div class="card my-1 rounded-0">
-                    <img class="card-img-top rounded-0" src="media/{{ shoe.image }}" alt="Card image cap">
+                    <img class="card-img-top rounded-0" src="../media/{{ shoe.image }}" alt="{{ shoe.name }}">
                     <div class="card-body p-1">
                         <h5 class="card-title header-sm-small">{{ shoe.name }}</h5>
                         <p class="card-text text-sm-small mb-1">
@@ -22,7 +22,8 @@
                             <span class="fw-bold">Price: </span>&euro;{{ shoe.price }}
                         </p>
                         <div class="d-flex justify-content-center">
-                            <a href="#" class="btn btn-primary btn-shoe-detail text-sm-small me-1">View</a>
+                            <a href="{% url 'shoe_detail' shoe.id %}"
+                                class="btn btn-primary btn-shoe-detail text-sm-small me-1">View</a>
                             <a href="#" class="btn btn-primary btn-shoe-detail text-sm-small ms-1">Add to Cart</a>
                         </div>
                     </div>
