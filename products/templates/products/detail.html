@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load range %}
 
 
 {% block content %}
@@ -63,7 +64,16 @@
         <div class="col-12 d-flex justify-content-center py-2">
             <div class="d-flex flex-column align-items-center rounded-element p-2">
                 <h4>Ratings</h4>
-                <span id="rating" class="mb-2">5 stars</span>
+                <span id="rating" class="mb-2"></span> <br>
+                <div class="d-flex justify-content-center my-1">
+                    {% for star in 5|range %}
+                    {% if star <= shoe.avg_rating %}
+                    <i class="fas fa-star"></i>
+                    {% else %}
+                    <i class="far fa-star"></i>
+                    {% endif %}
+                    {% endfor %}
+                </div>
                 <div class="d-flex">
                     <a class="btn btn-primary" href="{% url 'view_reviews' shoe.id %}" role="button">View Reviews</a>
                     <a class="btn btn-primary" href="{% url 'write_review' shoe.id %}" role="button">Write Review</a>

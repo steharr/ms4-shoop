@@ -58,6 +58,13 @@ def shoe_detail(request, shoe_id):
 
     shoe = get_object_or_404(Shoe, pk=shoe_id)
 
+    # find average ratings for the extracted shoe
+    avg_rating = Review.objects.filter(shoe=shoe).aggregate(Avg('rating'))
+    if avg_rating['rating__avg'] is None:
+        shoe.avg_rating = "No Reviews"
+    else:
+        shoe.avg_rating = round(avg_rating['rating__avg'])
+
     context = {
         'shoe': shoe,
     }
