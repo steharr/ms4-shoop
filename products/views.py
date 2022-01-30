@@ -15,9 +15,10 @@ def all_shoes(request):
             if not query:
                 # error messages -> empty query
                 return redirect(reverse('products'))
-            # search for specified text in name or descript
+            # search for text in name, description or category
             queries = Q(name__icontains=query) | Q(
-                description__icontains=query)
+                description__icontains=query) | Q(
+                    category__name__icontains=query)
             shoes = Shoe.objects.filter(queries)
         else:
             shoes = Shoe.objects.all()
