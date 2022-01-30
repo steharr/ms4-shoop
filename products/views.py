@@ -1,11 +1,26 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from .models import Shoe
+from django.db.models import Q
 
 
 def all_shoes(request):
     """ A view to allow user to browse, sort and search shoes """
 
-    shoes = Shoe.objects.all()
+    # get handler
+    if request.GET:
+        # search box queries
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                # error messages -> empty query
+                return redirect(reverse('products'))
+            # search for specified text in name or descript
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query)
+            shoes = Shoe.objects.filter(queries)
+        else:
+            shoes = Shoe.objects.all()
 
     context = {
         'shoes': shoes,

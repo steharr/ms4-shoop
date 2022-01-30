@@ -47,11 +47,17 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'home' %}">Shoop</a>
-                <!-- Table to Desktop Search bar -->
-                <form class="d-none d-md-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-                </form>
+                <!-- Search Bar: Tablet to Desktop -->
+                <div class="d-none d-md-inline">
+                    <form action="{% url 'shoes' %}" method="GET">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search" aria-label="Search"
+                                aria-describedby="button-addon2">
+                            <button class="btn btn-outline-success" type="submit" id="button-addon2"><i
+                                    class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
                 <!-- Navigation options -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,11 +105,15 @@
                 </div>
             </div>
         </nav>
+        <!-- Search Bar: Mobile -->
         <div class="d-flex d-md-none justify-content-center bg-light py-2">
-            <!-- Mobile Search bar -->
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+            <form action="{% url 'shoes' %}" method="GET">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search" aria-label="Search"
+                        aria-describedby="button-addon2">
+                    <button class="btn btn-outline-success" type="submit" id="button-addon2"><i
+                            class="fas fa-search"></i></button>
+                </div>
             </form>
         </div>
     </header>
