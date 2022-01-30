@@ -67,7 +67,7 @@
                     <ul class="navbar-nav">
                         <!-- home -->
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
                         <!-- account options -->
                         {% if request.user.is_authenticated %}
@@ -80,14 +80,14 @@
 
                         <!-- by gender -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Mens</a>
+                            <a class="nav-link" href="{% url 'shoes' %}?gender=m">Mens</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Womens</a>
+                            <a class="nav-link" href="{% url 'shoes' %}?gender=f">Womens</a>
                         </li>
                         <!-- all -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">All</a>
+                            <a class="nav-link" href="{% url 'shoes' %}">All</a>
                         </li>
                         <!-- by brands -->
                         <li class="nav-item dropdown">

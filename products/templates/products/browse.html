@@ -6,6 +6,7 @@
 <div class="container">
     <!-- grid of shoe products: 2xw phone, 3xw tablet, 4xw desktop -->
     <div class="row my-4">
+        {% if shoes%}
         {% for shoe in shoes %}
         <div class="col-6 col-md-4 col-lg-3 py-1">
             <div class="d-flex justify-content-center">
@@ -29,6 +30,9 @@
             </div>
         </div>
         {% endfor %}
+        {% else %}
+        <p>no shoes to show!</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

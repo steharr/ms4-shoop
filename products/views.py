@@ -6,6 +6,7 @@ from django.db.models import Q
 
 def all_shoes(request):
     """ A view to allow user to browse, sort and search shoes """
+    shoes = Shoe.objects.all()
 
     # get handler
     if request.GET:
@@ -19,9 +20,11 @@ def all_shoes(request):
             queries = Q(name__icontains=query) | Q(
                 description__icontains=query) | Q(
                     category__name__icontains=query)
-            shoes = Shoe.objects.filter(queries)
-        else:
-            shoes = Shoe.objects.all()
+            shoes = shoes.filter(queries)
+        # gender queries
+        if 'gender' in request.GET:
+            gender = request.GET['gender']
+            shoes = shoes.filter(gender__iexact=gender)
 
     context = {
         'shoes': shoes,
