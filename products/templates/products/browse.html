@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load range %}
+
+{% block page_header %}
+<div class="container">
+    <h2 class="mt-2 text-center">{{ header }}</h2>
+    <hr>
+</div>
+{% endblock %}
 
 
 {% block content %}
@@ -18,7 +26,17 @@
                             <li class="list-group-item py-1"> <strong>Price:</strong> &euro; {{ shoe.price }}</li>
                             <li class="list-group-item py-1"> <strong>Brand:</strong> {{ shoe.brand|title }}</li>
                             <li class="list-group-item py-1"> <strong>Category:</strong> {{ shoe.category|title }}</li>
-                            <li class="text-center list-group-item py-1"> <span>Ratings</span></li>
+                            <li class="text-center list-group-item py-1"> <strong>Rating</strong><br>
+                                <div class="d-flex justify-content-center my-1">
+                                    {% for star in 5|range %}
+                                    {% if star <= shoe.avg_rating %}
+                                    <i class="fas fa-star"></i>
+                                    {% else %}
+                                    <i class="far fa-star"></i>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </li>
                         </ul>
                         <div class="d-flex justify-content-center">
                             <a href="{% url 'shoe_detail' shoe.id %}"
