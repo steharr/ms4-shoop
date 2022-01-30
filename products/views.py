@@ -39,7 +39,7 @@ def all_shoes(request):
         avg_rating = Review.objects.filter(shoe=extracted_shoe).aggregate(
             Avg('rating'))
         if avg_rating['rating__avg'] is None:
-            extracted_shoe.avg_rating = "No Reviews"
+            extracted_shoe.avg_rating = -1  # return a neg number if no reviews
         else:
             extracted_shoe.avg_rating = round(avg_rating['rating__avg'])
 
@@ -61,7 +61,7 @@ def shoe_detail(request, shoe_id):
     # find average ratings for the extracted shoe
     avg_rating = Review.objects.filter(shoe=shoe).aggregate(Avg('rating'))
     if avg_rating['rating__avg'] is None:
-        shoe.avg_rating = "No Reviews"
+        shoe.avg_rating = -1  # return a neg number if no reviews
     else:
         shoe.avg_rating = round(avg_rating['rating__avg'])
 

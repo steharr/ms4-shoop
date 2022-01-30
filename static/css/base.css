@@ -33,6 +33,10 @@ body {
     padding: .25rem .5rem .25rem .5rem;
 }
 
+.box-ratings {
+    height: 1.5rem;
+}
+
 /* detail */
 .rounded-element {
     border: 1px solid grey;
