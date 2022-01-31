@@ -17,16 +17,6 @@ body {
     background-size: cover;
 }
 
-@media screen and (min-width: 992px) {
-    .home-image-md {
-        background-image: none;
-    }
-
-    .home-image-lg {
-        background-image: url('/media/homepage.jpg');
-        background-size: cover;
-    }
-}
 
 /* browse */
 .btn-shoe-detail {
@@ -35,6 +25,13 @@ body {
 
 .box-ratings {
     height: 1.5rem;
+}
+
+.form-refine-search {
+    background-color: #f7f7f7;
+    border-radius: .25rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 /* detail */
@@ -63,5 +60,23 @@ body {
 
     .text-sm-small {
         font-size: 1rem;
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+    .home-image-md {
+        background-image: none;
+    }
+
+    .home-image-lg {
+        background-image: url('/media/homepage.jpg');
+        background-size: cover;
+    }
+
+    .form-refine-search {
+        max-width: 60%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
