@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-12">
+        <form class="d-flex justify-content-around" action="{% url 'shoes' %}" method="GET">
+            <div>
+                <!-- Filter by Category -->
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Category</option>
+                    {% for category in categories %}
+                    {% for c in category %}
+                    <option value="{{ c.name }}">{{ c.friendly_name }}</option>
+                    {% endfor%}
+                    {% endfor%}
+                </select>
+            </div>
+            <div>
+                <!-- Filter by Brand -->
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Brand</option>
+                    {% for brand in brands %}
+                    {% for b in brand %}
+                    <option value="{{ b.name }}">{{ b.friendly_name }}</option>
+                    {% endfor%}
+                    {% endfor%}
+                </select>
+            </div>
+            <div class="sorting-options">
+                <p>Sort By:</p>
+                <div class="sort-select-box">
+                    <!-- Sort by Price -->
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option value="price_reset" selected>Price</option>
+                        <option value="price_asc">Low to High</option>
+                        <option value="price_desc">High to Low</option>
+                    </select>
+                </div>
+                <div class="sort-select-box">
+                    <!-- Sort by Rating -->
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option value="rating_reset" selected>Rating</option>
+                        <option value="rating_asc">Low to High</option>
+                        <option value="rating_desc">High to Low</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
