@@ -1,46 +1,60 @@
 <div class="row">
     <div class="col-12">
-        <form class="d-flex justify-content-around" action="{% url 'shoes' %}" method="GET">
-            <div>
-                <!-- Filter by Category -->
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Category</option>
-                    {% for category in categories %}
-                    {% for c in category %}
-                    <option value="{{ c.name }}">{{ c.friendly_name }}</option>
-                    {% endfor%}
-                    {% endfor%}
-                </select>
-            </div>
-            <div>
-                <!-- Filter by Brand -->
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Brand</option>
-                    {% for brand in brands %}
-                    {% for b in brand %}
-                    <option value="{{ b.name }}">{{ b.friendly_name }}</option>
-                    {% endfor%}
-                    {% endfor%}
-                </select>
-            </div>
-            <div class="sorting-options">
-                <p>Sort By:</p>
-                <div class="sort-select-box">
-                    <!-- Sort by Price -->
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="price_reset" selected>Price</option>
-                        <option value="price_asc">Low to High</option>
-                        <option value="price_desc">High to Low</option>
-                    </select>
+        <form class="form-refine-search" action="{% url 'shoes' %}" method="GET">
+            <div class="d-flex justify-content-around">
+                <div class="d-flex flex-column">
+                    <strong class="me-md-2">Filter By:</strong>
+                    <div class="d-flex flex-column flex-md-row">
+                        <div>
+                            <!-- Filter by Category -->
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option value="category_filt_all" selected>Category</option>
+                                {% for category in categories %}
+                                {% for c in category %}
+                                <option value="category_filt_{{ c.name }}">{{ c.friendly_name }}</option>
+                                {% endfor%}
+                                {% endfor%}
+                                <option value="category_filt_all">All</option>
+                            </select>
+                        </div>
+                        <div>
+                            <!-- Filter by Brand -->
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option value="brand_filt_all" selected>Brand</option>
+                                {% for brand in brands %}
+                                {% for b in brand %}
+                                <option value="brand_filt_{{ b.name }}">{{ b.friendly_name }}</option>
+                                {% endfor%}
+                                {% endfor%}
+                                <option value="brand_filt_all">All</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="sort-select-box">
-                    <!-- Sort by Rating -->
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="rating_reset" selected>Rating</option>
-                        <option value="rating_asc">Low to High</option>
-                        <option value="rating_desc">High to Low</option>
-                    </select>
+                <div class="d-flex flex-column">
+                    <strong class="me-md-2">Sort By:</strong>
+                    <div class="d-flex flex-column flex-md-row">
+                        <div>
+                            <!-- Sort by Price -->
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option value="price_sort_reset" selected>Price</option>
+                                <option value="price_sort_asc">Low to High</option>
+                                <option value="price_sort_desc">High to Low</option>
+                            </select>
+                        </div>
+                        <div>
+                            <!-- Sort by Rating -->
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option value="rating_sort_reset" selected>Rating</option>
+                                <option value="rating_sort_asc">Low to High</option>
+                                <option value="rating_sort_desc">High to Low</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <button type="submit" class="btn btn-secondary">Apply</button>
             </div>
         </form>
     </div>
