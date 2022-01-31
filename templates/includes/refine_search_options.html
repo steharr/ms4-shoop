@@ -1,13 +1,14 @@
 <div class="row">
     <div class="col-12">
-        <form class="form-refine-search" action="{% url 'shoes' %}" method="GET">
+        <div class="form-refine-search">
             <div class="d-flex justify-content-around">
                 <div class="d-flex flex-column">
                     <strong class="me-md-2">Filter By:</strong>
                     <div class="d-flex flex-column flex-md-row">
                         <div>
                             <!-- Filter by Category -->
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <select id="filt-category" class="form-select form-select-sm"
+                                aria-label=".form-select-sm example">
                                 <option value="category_filt_all" selected>Category</option>
                                 {% for category in categories %}
                                 {% for c in category %}
@@ -19,7 +20,8 @@
                         </div>
                         <div>
                             <!-- Filter by Brand -->
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <select id="filt-brand" class="form-select form-select-sm"
+                                aria-label=".form-select-sm example">
                                 <option value="brand_filt_all" selected>Brand</option>
                                 {% for brand in brands %}
                                 {% for b in brand %}
@@ -36,7 +38,8 @@
                     <div class="d-flex flex-column flex-md-row">
                         <div>
                             <!-- Sort by Price -->
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <select id="sort-price" class="form-select form-select-sm"
+                                aria-label=".form-select-sm example">
                                 <option value="price_sort_reset" selected>Price</option>
                                 <option value="price_sort_asc">Low to High</option>
                                 <option value="price_sort_desc">High to Low</option>
@@ -44,7 +47,8 @@
                         </div>
                         <div>
                             <!-- Sort by Rating -->
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <select id="sort-rating" class="form-select form-select-sm"
+                                aria-label=".form-select-sm example">
                                 <option value="rating_sort_reset" selected>Rating</option>
                                 <option value="rating_sort_asc">Low to High</option>
                                 <option value="rating_sort_desc">High to Low</option>
@@ -54,8 +58,8 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-2">
-                <button type="submit" class="btn btn-secondary">Apply</button>
+                <button id="refine-search-btn" type="button" class="btn btn-secondary">Apply</button>
             </div>
-        </form>
+        </div>
     </div>
 </div>

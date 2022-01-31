@@ -61,3 +61,36 @@
     </div>
 </div>
 {% endblock %}
+
+{% block postload_js %}
+<script type='text/javascript'>
+    let currentUrl = new URL(window.location);
+    $('#refine-search-btn').on("click", function () {
+        // filter handler
+        // get filters
+        let filtCategory = $('#filt-category').val();
+        let filtBrand = $('#filt-brand').val();
+        // get chosen filter options
+        let optCategory = filtCategory.split('_')[2];
+        let optBrand = filtBrand.split('_')[2];
+        // add them to the url
+        currentUrl.searchParams.set('filter_category', optCategory);
+        currentUrl.searchParams.set('filter_brand', optBrand);
+
+        // sort handler
+        // get sorts
+        let sortRating = $('#sort-rating').val();
+        let sortPrice = $('#sort-price').val();
+        // get chosen sort options
+        let optRating = sortRating.split('_')[2];
+        let optPrice = sortPrice.split('_')[2];
+        // add them to the url
+        currentUrl.searchParams.set('sort_rating', optRating);
+        currentUrl.searchParams.set('sort_price', optBrand);
+
+
+        window.location.replace(currentUrl);
+    })
+</script>
+
+{% endblock %}
