@@ -11,7 +11,7 @@
                                 aria-label=".form-select-sm example">
                                 <option value="category_filt_all" selected>Category</option>
                                 {% for category in categories %}
-                                <option value="category_filt_{{ c.name }}">{{ c.friendly_name }}</option>
+                                <option value="category_filt_{{ category.name }}">{{ category.friendly_name }}</option>
                                 {% endfor%}
                                 <option value="category_filt_all">All</option>
                             </select>
@@ -22,7 +22,7 @@
                                 aria-label=".form-select-sm example">
                                 <option value="brand_filt_all" selected>Brand</option>
                                 {% for brand in brands %}
-                                <option value="brand_filt_{{ b.name }}">{{ b.friendly_name }}</option>
+                                <option value="brand_filt_{{ brand.name }}">{{ brand.friendly_name }}</option>
                                 {% endfor%}
                                 <option value="brand_filt_all">All</option>
                             </select>
