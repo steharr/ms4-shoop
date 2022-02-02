@@ -10,8 +10,8 @@ def all_shoes(request):
     """ A view to allow user to browse, sort and search shoes """
     shoes = Shoe.objects.all()
     header = "Browse - All"
-    categories = Category.objects.all(),
-    brands = Brand.objects.all(),
+    categories = Category.objects.all()
+    brands = Brand.objects.all()
 
     # get handler
     if request.GET:
@@ -34,18 +34,9 @@ def all_shoes(request):
             gender = request.GET['gender']
             shoes = shoes.filter(gender__iexact=gender)
             if gender == "m":
-                header = f'Browse - Mens'
+                header = 'Browse - Mens'
             else:
-                header = f'Browse - Womens'
-
-    # find average ratings for all extracted shoes
-    for extracted_shoe in shoes:
-        avg_rating = Review.objects.filter(shoe=extracted_shoe).aggregate(
-            Avg('rating'))
-        if avg_rating['rating__avg'] is None:
-            extracted_shoe.avg_rating = -1  # return a neg number if no reviews
-        else:
-            extracted_shoe.avg_rating = round(avg_rating['rating__avg'])
+                header = 'Browse - Womens'
 
     # handle refined searches
     if 'filter_category' in request.GET:
@@ -66,6 +57,15 @@ def all_shoes(request):
             shoes = shoes.order_by('-price')
         else:
             shoes = shoes.order_by('price')
+
+    # find average ratings for all extracted shoes
+    for extracted_shoe in shoes:
+        avg_rating = Review.objects.filter(shoe=extracted_shoe).aggregate(
+            Avg('rating'))
+        if avg_rating['rating__avg'] is None:
+            extracted_shoe.avg_rating = -1  # return a neg number if no reviews
+        else:
+            extracted_shoe.avg_rating = round(avg_rating['rating__avg'])
 
     context = {
         'shoes': shoes,
