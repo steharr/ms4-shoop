@@ -27,7 +27,7 @@ body {
     height: 1.5rem;
 }
 
-.form-refine-search {
+.refine-search {
     background-color: #f7f7f7;
     border-radius: .25rem;
     padding-top: 1rem;
@@ -74,7 +74,7 @@ body {
         background-size: cover;
     }
 
-    .form-refine-search {
+    .refine-search {
         max-width: 60%;
         margin-left: auto;
         margin-right: auto;
