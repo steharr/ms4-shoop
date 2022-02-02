@@ -1,5 +1,4 @@
-[
-    {
+[{
         "pk": 1,
         "model": "products.shoe",
         "fields": {
@@ -18,13 +17,13 @@
         "model": "products.shoe",
         "fields": {
             "sku": "SHOOP20220101",
-            "category": 1,
+            "category": 2,
             "gender": "m",
-            "brand": 1,
-            "name": "Nike Air Max 90",
-            "description": "The Air Max 90 is an essential for any Nike collection. Constructed from a mix of leather, synthetic and textile uppers in bold colours and safari-pattern graphics. Featuring classic Air Max branding, padded collars, a foam midsole, sitting on a rubber Waffle outsole with a visible Max air unit.",
+            "brand": 2,
+            "name": "Test2",
+            "description": "Test2",
             "image": "nike-airmax90.png",
-            "price": 50.00
+            "price": 25.00
         }
     },
     {
@@ -32,13 +31,13 @@
         "model": "products.shoe",
         "fields": {
             "sku": "SHOOP20220101",
-            "category": 1,
+            "category": 2,
             "gender": "m",
-            "brand": 1,
-            "name": "Nike Air Max 90",
-            "description": "The Air Max 90 is an essential for any Nike collection. Constructed from a mix of leather, synthetic and textile uppers in bold colours and safari-pattern graphics. Featuring classic Air Max branding, padded collars, a foam midsole, sitting on a rubber Waffle outsole with a visible Max air unit.",
+            "brand": 2,
+            "name": "Test3",
+            "description": "Test3",
             "image": "nike-airmax90.png",
-            "price": 50.00
+            "price": 30.00
         }
     },
     {
@@ -46,13 +45,13 @@
         "model": "products.shoe",
         "fields": {
             "sku": "SHOOP20220101",
-            "category": 1,
+            "category": 3,
             "gender": "m",
-            "brand": 1,
-            "name": "Nike Air Max 90",
-            "description": "The Air Max 90 is an essential for any Nike collection. Constructed from a mix of leather, synthetic and textile uppers in bold colours and safari-pattern graphics. Featuring classic Air Max branding, padded collars, a foam midsole, sitting on a rubber Waffle outsole with a visible Max air unit.",
+            "brand": 4,
+            "name": "Test4",
+            "description": "Test4",
             "image": "nike-airmax90.png",
-            "price": 50.00
+            "price": 12.30
         }
     }
 ]
