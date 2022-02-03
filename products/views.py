@@ -62,6 +62,13 @@ def all_shoes(request):
     shoes = shoes.annotate(avg_rating=Avg('review__rating'),
                            count_reviews=Count('review'))
 
+    if 'sort_rating' in request.GET:
+        query = request.GET['sort_rating']
+        if query == 'desc':
+            shoes = shoes.order_by('-avg_rating')
+        else:
+            shoes = shoes.order_by('avg_rating')
+
     context = {
         'shoes': shoes,
         'header': header,
