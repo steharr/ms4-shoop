@@ -13,9 +13,11 @@
                             <!-- Filter by Category -->
                             <select id="filt-category" class="form-select form-select-sm"
                                 aria-label=".form-select-sm example">
-                                <option value="category_filt_all" selected>Category</option>
+                                <option value="category_filt_all">Category</option>
                                 {% for category in categories %}
-                                <option value="category_filt_{{ category.name }}">{{ category.friendly_name }}</option>
+                                <option value="category_filt_{{ category.name }}"
+                                    {% if category.name in refined_search.category %}selected{% endif %}>
+                                    {{ category.friendly_name }}</option>
                                 {% endfor%}
                                 <option value="category_filt_all">All</option>
                             </select>
@@ -24,11 +26,15 @@
                             <!-- Filter by Brand -->
                             <select id="filt-brand" class="form-select form-select-sm"
                                 aria-label=".form-select-sm example">
-                                <option value="brand_filt_all" selected>Brand</option>
+                                <option value="brand_filt_all"
+                                    {% if 'All' in refined_search.brand %}selected{% endif %}>Brand</option>
                                 {% for brand in brands %}
-                                <option value="brand_filt_{{ brand.name }}">{{ brand.friendly_name }}</option>
+                                <option value="brand_filt_{{ brand.name }}"
+                                    {% if brand.name in refined_search.brand %}selected{% endif %}>
+                                    {{ brand.friendly_name }}</option>
                                 {% endfor%}
-                                <option value="brand_filt_all">All</option>
+                                <option value="brand_filt_all"
+                                    {% if 'All' in refined_search.brand %}selected{% endif %}>All</option>
                             </select>
                         </div>
                     </div>
@@ -40,18 +46,29 @@
                             <!-- Sort by Price -->
                             <select id="sort-price" class="form-select form-select-sm"
                                 aria-label=".form-select-sm example">
-                                <option value="price_sort_reset" selected>Price</option>
-                                <option value="price_sort_asc">Low to High</option>
-                                <option value="price_sort_desc">High to Low</option>
+                                <option value="price_sort_reset"
+                                    {% if 'Reset' in refined_search.sort_price %}selected{% endif %}>Price</option>
+                                <option value="price_sort_asc"
+                                    {% if 'Low to High' in refined_search.sort_price %}selected{% endif %}>Low to High
+                                </option>
+                                <option value="price_sort_desc"
+                                    {% if 'High to Low' in refined_search.sort_price %}selected{% endif %}>High to Low
+                                </option>
                             </select>
                         </div>
                         <div>
                             <!-- Sort by Rating -->
                             <select id="sort-rating" class="form-select form-select-sm"
                                 aria-label=".form-select-sm example">
-                                <option value="rating_sort_reset" selected>Rating</option>
-                                <option value="rating_sort_asc">Low to High</option>
-                                <option value="rating_sort_desc">High to Low</option>
+                                <option value="rating_sort_reset"
+                                    {% if 'Reset' in refined_search.sort_rating %}selected{% endif %}>Rating
+                                </option>
+                                <option value="rating_sort_asc"
+                                    {% if 'Low to High' in refined_search.sort_rating %}selected{% endif %}>Low to High
+                                </option>
+                                <option value="rating_sort_desc"
+                                    {% if 'High to Low' in refined_search.sort_rating %}selected{% endif %}>High to Low
+                                </option>
                             </select>
                         </div>
                     </div>

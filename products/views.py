@@ -38,25 +38,38 @@ def all_shoes(request):
             else:
                 header = 'Browse - Womens'
 
+    # initialise a refined search variable
+    refined_search = {}
+
     # handle refined searches
     if 'filter_category' in request.GET:
         query = request.GET['filter_category']
         if query != 'all':
             category = Category.objects.get(name=query)
             shoes = shoes.filter(category=category)
+            refined_search['category'] = query
+        else:
+            refined_search['category'] = 'All'
 
     if 'filter_brand' in request.GET:
         query = request.GET['filter_brand']
         if query != 'all':
             brand = Brand.objects.get(name=query)
             shoes = shoes.filter(brand=brand)
+            refined_search['brand'] = query
+    else:
+        refined_search['brand'] = 'All'
 
     if 'sort_price' in request.GET:
         query = request.GET['sort_price']
         if query == 'desc':
             shoes = shoes.order_by('-price')
-        else:
+            refined_search['sort_price'] = 'High to Low'
+        elif query == 'asc':
             shoes = shoes.order_by('price')
+            refined_search['sort_price'] = 'Low to High'
+        else:
+            refined_search['sort_price'] = 'Reset'
 
     # annotate shows with average ratings & review count
     shoes = shoes.annotate(avg_rating=Avg('review__rating'),
@@ -66,14 +79,19 @@ def all_shoes(request):
         query = request.GET['sort_rating']
         if query == 'desc':
             shoes = shoes.order_by('-avg_rating')
-        else:
+            refined_search['sort_rating'] = 'High to Low'
+        elif query == 'asc':
             shoes = shoes.order_by('avg_rating')
+            refined_search['sort_rating'] = 'Low to High'
+        else:
+            refined_search['sort_rating'] = 'Reset'
 
     context = {
         'shoes': shoes,
         'header': header,
         'categories': categories,
         'brands': brands,
+        'refined_search': refined_search,
     }
 
     template = 'products/browse.html'
