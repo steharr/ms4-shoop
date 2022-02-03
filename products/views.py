@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from .models import Shoe, Brand, Category
 from reviews.models import Review
-from django.db.models import Q, Avg
+from django.db.models import Q, Avg, Count
 
 
 def all_shoes(request):
@@ -58,14 +58,9 @@ def all_shoes(request):
         else:
             shoes = shoes.order_by('price')
 
-    # find average ratings for all extracted shoes
-    for extracted_shoe in shoes:
-        avg_rating = Review.objects.filter(shoe=extracted_shoe).aggregate(
-            Avg('rating'))
-        if avg_rating['rating__avg'] is None:
-            extracted_shoe.avg_rating = -1  # return a neg number if no reviews
-        else:
-            extracted_shoe.avg_rating = round(avg_rating['rating__avg'])
+    # annotate shows with average ratings & review count
+    shoes = shoes.annotate(avg_rating=Avg('review__rating'),
+                           count_reviews=Count('review'))
 
     context = {
         'shoes': shoes,
@@ -82,14 +77,11 @@ def all_shoes(request):
 def shoe_detail(request, shoe_id):
     """ A view to allow user to look at specific shoe """
 
-    shoe = get_object_or_404(Shoe, pk=shoe_id)
-
     # find average ratings for the extracted shoe
-    avg_rating = Review.objects.filter(shoe=shoe).aggregate(Avg('rating'))
-    if avg_rating['rating__avg'] is None:
-        shoe.avg_rating = -1  # return a neg number if no reviews
-    else:
-        shoe.avg_rating = round(avg_rating['rating__avg'])
+    shoe = Shoe.objects.annotate(
+        avg_rating=Avg('review__rating'),
+        count_reviews=Count('review'),
+    ).get(pk=shoe_id)
 
     context = {
         'shoe': shoe,

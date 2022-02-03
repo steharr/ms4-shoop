@@ -27,10 +27,10 @@
                             <li class="list-group-item py-1"> <strong>Price:</strong> &euro; {{ shoe.price }}</li>
                             <li class="list-group-item py-1"> <strong>Brand:</strong> {{ shoe.brand|title }}</li>
                             <li class="list-group-item py-1"> <strong>Category:</strong> {{ shoe.category|title }}</li>
-                            <li class="text-center list-group-item py-1"> <strong>Rating</strong><br>
+                            <li class="text-center list-group-item py-1">
+                                <strong>Rating </strong><span>({{shoe.count_reviews}})</span><br>
                                 <div class="d-flex justify-content-center align-items-center box-ratings">
                                     {% if shoe.avg_rating >= 0 %}
-                                    {% comment %} If there is an average rating for this shoe {% endcomment %}
                                     {% for star in 5|range %}
                                     {% if star <= shoe.avg_rating %}
                                     <i class="text-warning fs-6 fas fa-star"></i>
@@ -39,7 +39,6 @@
                                     {% endif %}
                                     {% endfor %}
                                     {% else %}
-                                    {% comment %} if the shoe has no reviews yet {% endcomment %}
                                     <p class="m-0">No reviews yet.</p>
                                     {% endif %}
                                 </div>

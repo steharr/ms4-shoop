@@ -65,7 +65,10 @@
     <div class="row">
         <!-- Ratings -->
         <div class="col-12 d-flex flex-column align-items-center justify-content-center">
-            <strong class="mb-2">Rating</strong>
+            <div class="d-flex">
+                <strong class="mb-2">Rating</strong>
+                <span>({{shoe.count_reviews}})</span>
+            </div>
             <div class="d-flex mb-2">
                 {% if shoe.avg_rating >= 0 %}
                 {% comment %} If there is an average rating for this shoe {% endcomment %}
