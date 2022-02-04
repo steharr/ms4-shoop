@@ -44,51 +44,71 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'home' %}">Shoop</a>
-                <!-- Search Bar: Tablet to Desktop -->
-                <div class="d-none d-md-inline">
-                    <form action="{% url 'shoes' %}" method="GET">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search" aria-label="Search"
-                                aria-describedby="button-addon2">
-                            <button class="btn btn-outline-success" type="submit" id="button-addon2"><i
-                                    class="fas fa-search"></i></button>
-                        </div>
-                    </form>
-                </div>
-                <!-- Navigation options -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="d-flex justify-content-start w-100">
+                <!-- Shoop title: Desktop -->
+                <a class="ms-2 navbar-brand shoop-title d-none d-lg-block" href="{% url 'home' %}">Shoop</a>
+                <!-- Shoop title: Desktop -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <!-- home -->
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                <a class="ms-2 navbar-brand shoop-title d-block d-lg-none" href="{% url 'home' %}">Shoop</a>
+                <ul class="d-flex flex-row navbar-nav">
+                    <!-- home -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
-                        <!-- account options -->
+                        <!-- login options -->
                         {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Product Management</a>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" aria-current="page" href="#">Product Management</a>
                         </li>
                         {% endif %}
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="{% url 'account_logout' %}" class="dropdown-item">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                        </li>
                         {% endif %}
-
                         <!-- by gender -->
-                        <li class="nav-item">
+                        <li class="nav-item mx-2">
                             <a class="nav-link" href="{% url 'shoes' %}?gender=m">Mens</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mx-2">
                             <a class="nav-link" href="{% url 'shoes' %}?gender=f">Womens</a>
                         </li>
                         <!-- all -->
-                        <li class="nav-item">
+                        <li class="nav-item mx-2">
                             <a class="nav-link" href="{% url 'shoes' %}">All</a>
                         </li>
-                    </ul>
+                </ul>
+
+
+                <div class="d-flex ms-auto">
+                    <!-- Search Bar: Tablet to Desktop -->
+                    <div class="d-none d-md-flex">
+                        <form action="{% url 'shoes' %}" method="GET">
+                            <div class="input-group">
+                                <input type="text" name="q" class="form-control" placeholder="Search"
+                                    aria-label="Search" aria-describedby="button-addon2">
+                                <button class="btn btn-outline-success" type="submit" id="button-addon2"><i
+                                        class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Account settings -->
+                    <div class="btn-group">
+                        <a href="#" class="btn-account fs-4"><i class="fas fa-user"></i></a>
+                        <a href="#" class="btn-account fs-4"><i class="fas fa-shopping-cart"></i></a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -103,6 +123,7 @@
                 </div>
             </form>
         </div>
+
     </header>
 
     {% block page_header %}

@@ -17,6 +17,10 @@ body {
     background-size: cover;
 }
 
+.btn-account {
+    margin-left: 1rem;
+    margin-right: .25rem;
+}
 
 /* browse */
 .btn-shoe-detail {
@@ -79,4 +83,10 @@ body {
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+.black-box {
+    height: 1rem;
+    width: 1rem;
+    background-color: black;
 }
