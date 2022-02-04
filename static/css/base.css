@@ -38,6 +38,10 @@ body {
     padding-bottom: 1rem;
 }
 
+.small-font {
+    font-size: .8rem;
+}
+
 /* detail */
 .rounded-element {
     border: 1px solid grey;

@@ -4,7 +4,13 @@
 
 {% block page_header %}
 <div class="container">
-    <h2 class="mt-2 text-center">{{ header }}</h2>
+    <h2 class="mt-2 text-center">
+        {% if refined_search %}
+        {{ shoes|length }} products found
+        {% else %}
+        {{ header }}
+        {% endif %}
+    </h2>
     <hr>
 </div>
 {% endblock %}

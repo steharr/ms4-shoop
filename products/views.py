@@ -57,8 +57,8 @@ def all_shoes(request):
             brand = Brand.objects.get(name=query)
             shoes = shoes.filter(brand=brand)
             refined_search['brand'] = query
-    else:
-        refined_search['brand'] = 'All'
+        else:
+            refined_search['brand'] = 'All'
 
     if 'sort_price' in request.GET:
         query = request.GET['sort_price']
