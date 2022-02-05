@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load range %}
 
 {% block page_header %}
 <div class="container">
-    <h2 class="mt-2 text-center">Test</h2>
+    <h2 class="mt-2 text-center">Shopping Cart</h2>
     <hr>
 </div>
 {% endblock %}
@@ -11,8 +12,80 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        {{ cart_items }}
+        <table class="table table-striped align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th class="cart-table-header" scope="col">#</th>
+                    <th class="cart-table-header" scope="col">Item</th>
+                    <th class="cart-table-header" scope="col">Size</th>
+                    <th class="cart-table-header" scope="col">Qty</th>
+                    <th class="cart-table-header" scope="col">Price</th>
+                    <th class="cart-table-header" scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img class="shoe-image-preview" src="{{ MEDIA_URL }}/{{ item.shoe.image }}"
+                                alt="{{ shoe.name }}">
+                            <h3 class="mb-0 ms-2 fs-6">{{ item.shoe.name }}</h3>
+                        </div>
+                    </td>
+                    <td>UK <strong>{{ item.size }}</strong></td>
+                    <td>
+                        <select data-shoe-size="{{ item.size }}" data-shoe-id="{{ item.shoe_id }}" style="width:5rem;"
+                            class="form-select item-qty" aria-label="Default select example">
+                            <option value="0" {% if item.qty == 0%}selected{% endif %}>0</option>
+                            {% for i in 5|range %}
+                            <option value="{{i}}" {% if i == item.qty %}selected{% endif %}>{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>{{ item.shoe.price }}</td>
+                    <td>{{ item.item_price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 
+{% endblock %}
+
+{% block postload_js %}
+<script type='text/javascript'>
+    // qty increments/decrements handler
+    $('.item-qty').on("change", function () {
+
+        // extract the new options chosen by the user
+        let shoeId = $(this).data('shoe-id');
+        let shoeSize = $(this).data('shoe-size');
+
+        // determine if removing or updating
+        let newQty = $(this).val();
+        let url;
+        if (newQty <= 0) {
+            url = `/cart/remove/${shoeId}/`;
+        } else {
+            url = `/cart/update/${shoeId}/`;
+        }
+
+        // prepare data needed for post request
+        let csrfToken = "{{ csrf_token }}";
+        let data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'qty': newQty,
+            'size': shoeSize
+        };
+
+        // post data to the server
+        $.post(url, data).done(function () {
+            location.reload();
+        })
+
+    })
+</script>
 {% endblock %}
