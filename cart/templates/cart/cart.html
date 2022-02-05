@@ -57,8 +57,8 @@
                             <p>Sub Total: &euro; XX.XX</p>
                             <p>Delivery Cost: &euro; XX.XX</p>
                             <h4>Grand Total: &euro;{{ grand_total }}</h4>
-                            <a class="btn btn-success" href="#" role="button"><strong>Checkout Securely <i
-                                        class="fas fa-lock"></i></strong></a>
+                            <a class="btn btn-success" href="{% url 'checkout' %}" role="button"><strong>Checkout
+                                    Securely <i class="fas fa-lock"></i></strong></a>
                         </td>
                     </tr>
                 </tbody>
