@@ -18,23 +18,24 @@ def add_to_cart(request, shoe_id):
     size = request.POST.get('shoe_size')
     redirect_url = request.POST.get('redirect_url')
 
-    # check if shoe is already in the cart
-    if shoe_id in list(cart.keys()):
-        # check if size already exist in cart
-        if size in list(cart[shoe_id]):
-            cart[shoe_id][size]['qty'] += 1
+    if size:  # only add if the size is valid
+        # check if shoe is already in the cart
+        if shoe_id in list(cart.keys()):
+            # check if size already exist in cart
+            if size in list(cart[shoe_id]):
+                cart[shoe_id][size]['qty'] += 1
+            else:
+                # init an empty size object
+                cart[shoe_id][size] = {}
+                cart[shoe_id][size]['qty'] = 1
         else:
+            # init an empty shoe object
+            cart[shoe_id] = {}
             # init an empty size object
             cart[shoe_id][size] = {}
             cart[shoe_id][size]['qty'] = 1
-    else:
-        # init an empty shoe object
-        cart[shoe_id] = {}
-        # init an empty size object
-        cart[shoe_id][size] = {}
-        cart[shoe_id][size]['qty'] = 1
+        request.session['cart'] = cart
 
-    request.session['cart'] = cart
     return redirect(redirect_url)
 
 
