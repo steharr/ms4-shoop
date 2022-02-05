@@ -19,6 +19,7 @@ def add_to_cart(request, shoe_id):
         cart[shoe_id]['qty'] += 1
         cart[shoe_id]['size'] = size
     else:
+        cart[shoe_id] = {}
         cart[shoe_id]['qty'] = 1
         cart[shoe_id]['size'] = size
 
