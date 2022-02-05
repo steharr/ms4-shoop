@@ -64,7 +64,11 @@
         </div>
         {% endfor %}
         {% else %}
-        <p>no shoes to show!</p>
+        <p class="text-center">No Shoes Available!</p>
+        <div class="d-flex justify-content-center mb-2">
+            <a class="btn btn-primary" href="{% url 'shoes' %}" role="button">Browse All <i
+                    class="fas fa-shopping-basket"></i></a>
+        </div>
         {% endif %}
     </div>
 </div>
