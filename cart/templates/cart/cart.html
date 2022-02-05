@@ -12,6 +12,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        {% if cart_items %}
         <table class="table table-striped align-middle">
             <thead class="table-light">
                 <tr>
@@ -24,6 +25,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 {% for item in cart_items %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
@@ -31,7 +33,9 @@
                         <div class="d-flex align-items-center">
                             <img class="shoe-image-preview" src="{{ MEDIA_URL }}/{{ item.shoe.image }}"
                                 alt="{{ shoe.name }}">
-                            <h3 class="mb-0 ms-2 fs-6">{{ item.shoe.name }}</h3>
+                            <div class="d-flex flex-column">
+                                <h3 class="mb-0 ms-2 fs-6">{{ item.shoe.name }}</h3>
+                            </div>
                         </div>
                     </td>
                     <td>UK <strong>{{ item.size }}</strong></td>
@@ -50,6 +54,13 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% else %}
+        <p class="text-center">Your bag is empty</p>
+        <div class="d-flex justify-content-center mb-2">
+            <a class="btn btn-primary" href="{% url 'shoes' %}" role="button">Continue Shopping <i
+                    class="fas fa-shopping-basket"></i></a>
+        </div>
+        {% endif %}
     </div>
 </div>
 
