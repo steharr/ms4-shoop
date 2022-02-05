@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'reviews',
+    'cart',
 
     # installed apps
     'crispy_forms',
@@ -86,6 +87,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # needed for allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # custom context processors
+                'cart.contexts.cart_contents',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

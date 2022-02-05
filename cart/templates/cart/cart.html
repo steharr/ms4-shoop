@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<div class="container">
+    <h2 class="mt-2 text-center">Test</h2>
+    <hr>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {{ cart_items }}
+    </div>
+</div>
+
+{% endblock %}

@@ -4,8 +4,7 @@ from products.models import Shoe
 
 def view_cart(request):
     """ View for user to see whats in their shopping cart """
-    template = ' cart/cart.html'
-    return render(request, template)
+    return render(request, 'cart/cart.html')
 
 
 def add_to_cart(request, shoe_id):
@@ -15,13 +14,21 @@ def add_to_cart(request, shoe_id):
     cart = request.session.get('cart', {})
     redirect_url = request.POST.get('redirect_url')
 
-    if shoe_id in list(cart.keys()):  # check if shoe is already in the cart
-        cart[shoe_id]['qty'] += 1
-        cart[shoe_id]['size'] = size
+    # check if shoe is already in the cart
+    if shoe_id in list(cart.keys()):
+        # check if size already exist in cart
+        if size in list(cart[shoe_id]):
+            cart[shoe_id][size]['qty'] += 1
+        else:
+            # init an empty size object
+            cart[shoe_id][size] = {}
+            cart[shoe_id][size]['qty'] = 1
     else:
+        # init an empty shoe object
         cart[shoe_id] = {}
-        cart[shoe_id]['qty'] = 1
-        cart[shoe_id]['size'] = size
+        # init an empty size object
+        cart[shoe_id][size] = {}
+        cart[shoe_id][size]['qty'] = 1
 
     request.session['cart'] = cart
     return redirect(redirect_url)
