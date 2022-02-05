@@ -13,47 +13,48 @@
 <div class="container">
     <div class="row">
         {% if cart_items %}
-        <table class="table table-striped align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th class="cart-table-header" scope="col">#</th>
-                    <th class="cart-table-header" scope="col">Item</th>
-                    <th class="cart-table-header" scope="col">Size</th>
-                    <th class="cart-table-header" scope="col">Qty</th>
-                    <th class="cart-table-header" scope="col">Price</th>
-                    <th class="cart-table-header" scope="col">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                {% for item in cart_items %}
-                <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img class="shoe-image-preview" src="{{ MEDIA_URL }}/{{ item.shoe.image }}"
-                                alt="{{ shoe.name }}">
-                            <div class="d-flex flex-column">
-                                <h3 class="mb-0 ms-2 fs-6">{{ item.shoe.name }}</h3>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th class="cart-table-header" scope="col">#</th>
+                        <th class="cart-table-header" scope="col">Item</th>
+                        <th class="cart-table-header" scope="col">Size</th>
+                        <th class="cart-table-header" scope="col">Qty</th>
+                        <th class="cart-table-header" scope="col">Price</th>
+                        <th class="cart-table-header" scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart_items %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img class="shoe-image-preview" src="{{ MEDIA_URL }}/{{ item.shoe.image }}"
+                                    alt="{{ shoe.name }}">
+                                <div class="d-flex flex-column">
+                                    <h3 class="mb-0 ms-2 fs-6">{{ item.shoe.name }}</h3>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>UK <strong>{{ item.size }}</strong></td>
-                    <td>
-                        <select data-shoe-size="{{ item.size }}" data-shoe-id="{{ item.shoe_id }}" style="width:5rem;"
-                            class="form-select item-qty" aria-label="Default select example">
-                            <option value="0" {% if item.qty == 0%}selected{% endif %}>0</option>
-                            {% for i in 5|range %}
-                            <option value="{{i}}" {% if i == item.qty %}selected{% endif %}>{{ i }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                    <td>{{ item.shoe.price }}</td>
-                    <td>{{ item.item_price }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        </td>
+                        <td>UK <strong>{{ item.size }}</strong></td>
+                        <td>
+                            <select data-shoe-size="{{ item.size }}" data-shoe-id="{{ item.shoe_id }}"
+                                style="width:5rem;" class="form-select item-qty" aria-label="Default select example">
+                                <option value="0" {% if item.qty == 0%}selected{% endif %}>0</option>
+                                {% for i in 5|range %}
+                                <option value="{{i}}" {% if i == item.qty %}selected{% endif %}>{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td>{{ item.shoe.price }}</td>
+                        <td>{{ item.item_price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
         {% else %}
         <p class="text-center">Your bag is empty</p>
         <div class="d-flex justify-content-center mb-2">
