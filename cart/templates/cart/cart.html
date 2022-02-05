@@ -14,7 +14,7 @@
     <div class="row">
         {% if cart_items %}
         <div class="table-responsive">
-            <table class="table table-striped align-middle">
+            <table class="table table-striped align-middle text-sm-small">
                 <thead class="table-light">
                     <tr>
                         <th class="cart-table-header" scope="col">#</th>
@@ -34,7 +34,7 @@
                                 <img class="shoe-image-preview" src="{{ MEDIA_URL }}/{{ item.shoe.image }}"
                                     alt="{{ shoe.name }}">
                                 <div class="d-flex flex-column">
-                                    <h3 class="mb-0 ms-2 fs-6">{{ item.shoe.name }}</h3>
+                                    <h3 class="mb-0 ms-2 text-sm-small">{{ item.shoe.name }}</h3>
                                 </div>
                             </div>
                         </td>
@@ -48,10 +48,19 @@
                                 {% endfor %}
                             </select>
                         </td>
-                        <td>{{ item.shoe.price }}</td>
-                        <td>{{ item.item_price }}</td>
+                        <td>&euro;{{ item.shoe.price }}</td>
+                        <td>&euro;{{ item.item_price }}</td>
                     </tr>
                     {% endfor %}
+                    <tr>
+                        <td colspan="6" class="text-end">
+                            <p>Sub Total: &euro; XX.XX</p>
+                            <p>Delivery Cost: &euro; XX.XX</p>
+                            <h4>Grand Total: &euro;{{ grand_total }}</h4>
+                            <a class="btn btn-primary" href="#" role="button"><strong>Checkout Securely <i
+                                        class="fas fa-lock"></i></strong></a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
