@@ -15,6 +15,7 @@ def cart_contents(request):
             grand_total += item_price
             cart_items.append({
                 'shoe_id': shoe_id,
+                'shoe': shoe,
                 'size': chosen_size,
                 'qty': qty,
                 'item_price': item_price
