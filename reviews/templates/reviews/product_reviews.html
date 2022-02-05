@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <h5 class="text-center">{{shoe.name}}</h5>
             <div class="d-flex justify-content-center">
                 <img src="../../media/{{ shoe.image }}" class="img-fluid w-75" alt="{{ shoe.name }}">
@@ -17,7 +17,7 @@
             </ul>
             <a class="btn btn-primary" href="{% url 'write_review' shoe.id %}" role="button">Write Review</a>
         </div>
-        <div class="col-8 reviews">
+        <div class="col-12 col-md-8 reviews">
             {% if reviews %}
             {% for review in reviews %}
             <div class="card">

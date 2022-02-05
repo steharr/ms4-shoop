@@ -15,6 +15,7 @@
                 <li class="list-group-item">{{ shoe.brand|title }}</li>
                 <li class="list-group-item">{{ shoe.category|title }}</li>
             </ul>
+            <a class="btn btn-primary" href="{% url 'view_reviews' shoe.id %}" role="button">View Reviews</a>
         </div>
         <div class="col-8">
             <form action="{% url 'write_review' shoe.id %}" method="POST">
