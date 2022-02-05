@@ -28,7 +28,7 @@
                     <form action="{% url 'add_to_cart' shoe.id %}" class="d-flex flex-column" method="POST">
                         {% csrf_token %}
                         <select class="form-select mb-2" name="shoe_size" aria-label="Choose shoe size">
-                            <option selected>Size</option>
+                            <option selected disabled="disabled">Size</option>
                             <option value="2">2</option>
                             <option value="2.5">2 &frac12;</option>
                             <option value="3">3</option>
