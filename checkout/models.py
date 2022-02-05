@@ -1,5 +1,6 @@
 import uuid
 from django.db import IntegrityError, models
+from django.db.models import Sum
 from products.models import Shoe
 
 
@@ -22,9 +23,9 @@ class Order(models.Model):
     postcode = models.CharField(max_length=20)
 
     # payment details
-    order_cost = models.DecimalField(max_digits=10,
-                                     decimal_places=2,
-                                     default=0)
+    order_total = models.DecimalField(max_digits=10,
+                                      decimal_places=2,
+                                      default=0)
     delivery_cost = models.DecimalField(max_digits=6,
                                         decimal_places=2,
                                         default=0)
@@ -40,6 +41,15 @@ class Order(models.Model):
         Generates a string of 25 random characters
         """
         return str(uuid.uuid4().int)[:25]
+
+    def update_grand_total(self):
+        """
+        Updates the order grand total
+        when triggered
+        """
+        self.order_total = self.line_items.aggregate(Sum('item_total'))
+        self.grand_total = self.order_total + self.delivery_cost
+        self.save()
 
     def save(self, *args, **kwargs):
         """
@@ -67,7 +77,7 @@ class OrderLineItem(models.Model):
                              related_name="line_items")
     size = models.CharField(max_length=3)
     qty = models.IntegerField(default=0)
-    item_price = models.DecimalField(max_digits=10,
+    item_total = models.DecimalField(max_digits=10,
                                      decimal_places=2,
                                      editable=False)
 
@@ -76,7 +86,7 @@ class OrderLineItem(models.Model):
         Overrides the default to save
         to update the line item price
         """
-        self.item_price = self.shoe.price * self.qty
+        self.item_total = self.shoe.price * self.qty
         super().save(self, *args, **kwargs)
 
     def __str__(self):
