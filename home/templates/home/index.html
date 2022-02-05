@@ -5,10 +5,14 @@
 <div class="container-fluid h-100">
     <div class="row h-100">
         <div class="col-lg-4 d-flex justify-content-center align-items-center home-image-md">
-            <div class="p-4 rounded-3 bg-light">
-                <h1>Shoop</h1>
-                <p>Welcome to the store!</p>
-                <a class="btn btn-primary" href="{% url 'shoes' %}">Browse our collections...</a>
+            <div class="p-4 d-flex flex-column align-items-center rounded-3 bg-light">
+                <div class="d-flex flex-column align-items-center">
+                    <img class="me-1" style="width:5rem;" src="{{ MEDIA_URL }}/shoop-logo-bgtransp.png"
+                        alt="shoop-website-logo">
+                    <h1 id="shoop-title" class="m-0">Shoop</h1>
+                </div>
+                <p>Designer shoes straight to your doorstep</p>
+                <a class="btn btn-primary" href="{% url 'shoes' %}">Browse our collections now...</a>
             </div>
         </div>
         <div class="d-none d-lg-flex col-lg-8 home-image-lg">

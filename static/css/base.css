@@ -1,7 +1,7 @@
 /* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap');
 
-
-/* base */
+/* base css rules */
 html {
     height: 100%;
 }
@@ -10,6 +10,17 @@ body {
     height: 100vh;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Palanquin', sans-serif;
+    font-weight: 700;
+}
+
+
 
 /* home */
 .home-image-md {
@@ -17,10 +28,24 @@ body {
     background-size: cover;
 }
 
-.btn-account {
-    margin-left: 1rem;
-    margin-right: .25rem;
+#shoop-title {
+    font-family: 'Palanquin', sans-serif;
+    font-weight: 700;
+    color: #0275d8;
 }
+
+.btn-user {
+    margin-left: 1rem;
+    color: #0275d8;
+    border: none;
+}
+
+.btn-cart {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    color: #0275d8;
+}
+
 
 /* browse */
 .btn-shoe-detail {
