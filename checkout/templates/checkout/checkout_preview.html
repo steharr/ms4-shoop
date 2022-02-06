@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load range %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock%}
+
+{% block page_header %}
+<div class="container">
+    <h2 class="mt-2 text-center">Order Checkout</h2>
+    <hr>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form action="{% url 'create_checkout_session' %}" method="POST">
+                {% csrf_token %}
+                <!-- Shipping details -->
+                <!--<h5>Shipping:</h5>
+                {{ order_form|crispy }}-->
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success my-2" id="checkout-button">
+                        <strong>Checkout Securly <i class="fas fa-lock"></i></strong>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md-6">
+            <h5>Item Summary:</h5>
+            {% if cart_items %}
+            <div class="table-responsive">
+                <table class="table table-striped align-middle text-sm-small">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="cart-table-header" scope="col">#</th>
+                            <th class="cart-table-header" scope="col">Item</th>
+                            <th class="cart-table-header" scope="col">Size</th>
+                            <th class="cart-table-header" scope="col">Qty</th>
+                            <th class="cart-table-header" scope="col">Price</th>
+                            <th class="cart-table-header" scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img style="width:2rem;" src="{{ MEDIA_URL }}/{{ item.shoe.image }}"
+                                        alt="{{ shoe.name }}">
+                                    <div class="d-flex flex-column">
+                                        <h3 class="mb-0 ms-2 text-sm-small">{{ item.shoe.name }}</h3>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>UK <strong>{{ item.size }}</strong></td>
+                            <td>{{ item.qty }}
+                            </td>
+                            <td>&euro;{{ item.shoe.price }}</td>
+                            <td>&euro;{{ item.item_price }}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="6" class="text-end">
+                                <p>Sub Total: &euro; XX.XX</p>
+                                <p>Delivery Cost: &euro; XX.XX</p>
+                                <h4>Grand Total: &euro;{{ grand_total }}</h4>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-center">Your bag is empty</p>
+            <div class="d-flex justify-content-center mb-2">
+                <a class="btn btn-primary" href="{% url 'shoes' %}" role="button">Continue Shopping <i
+                        class="fas fa-shopping-basket"></i></a>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postload_js %}
+{{ block.super }}
+
+<script type="text/javascript" src="{% static 'checkout/js/checkout.js'%}"></script>
+{% endblock %}
