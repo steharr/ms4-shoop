@@ -75,6 +75,7 @@
 {% endblock %}
 
 {% block postload_js %}
+{{ block.super }}
 <script type='text/javascript'>
     let currentUrl = new URL(window.location);
     $('#refine-search-btn').on("click", function () {
