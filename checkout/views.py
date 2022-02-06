@@ -29,7 +29,6 @@ def create_checkout_session(request):
     # get current domain
     host = request.get_host()
     if request.method == 'POST':
-
         # create a checkout session (page hosted by stripe)
         try:
             checkout_session = stripe.checkout.Session.create(
