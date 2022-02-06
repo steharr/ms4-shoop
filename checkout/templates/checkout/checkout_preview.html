@@ -20,12 +20,15 @@
             <form action="{% url 'create_checkout_session' %}" method="POST">
                 {% csrf_token %}
                 <!-- Shipping details -->
-                <!--<h5>Shipping:</h5>
-                {{ order_form|crispy }}-->
+                <h5>Shipping:</h5>
+                {{ order_form|crispy }}
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-success my-2" id="checkout-button">
-                        <strong>Checkout Securly <i class="fas fa-lock"></i></strong>
+                        <strong>Pay Securely <i class="fas fa-lock"></i></strong>
                     </button>
+                    <input type="hidden" name="delivery_cost" value="3.00">
+                    <input type="hidden" name="grand_total" value="{{ grand_total }}">
+                    <input type="hidden" name="order_total" value="50.00">
                 </div>
             </form>
         </div>
