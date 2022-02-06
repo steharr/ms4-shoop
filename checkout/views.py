@@ -6,9 +6,7 @@ from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Shoe
 
-import json
 import stripe
-import os
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
