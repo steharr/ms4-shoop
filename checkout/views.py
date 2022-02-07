@@ -31,8 +31,8 @@ def create_checkout_session(request):
     host = request.get_host()
 
     if request.method == 'POST':
-        # extract the shipping details
-        shipping_data = {
+        # extract order details
+        order_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
@@ -42,14 +42,17 @@ def create_checkout_session(request):
             'street1': request.POST['street1'],
             'street2': request.POST['street2'],
             'county': request.POST['county'],
-        }
-        # extract the order details
-        order_data = {
             'order_total': request.POST['order_total'],
             'delivery_cost': request.POST['delivery_cost'],
             'grand_total': request.POST['grand_total'],
         }
-        # extract the line item details
+
+        order_form = OrderForm(order_data)
+
+        if order_form.is_valid():
+            order = order_form.save()
+            ref = order.id
+
         cart_line_items = []
         for shoe_id in cart:
             for size in cart[shoe_id]:
@@ -65,13 +68,20 @@ def create_checkout_session(request):
                     'quantity':
                     int(cart[shoe_id][size]['qty']),
                 })
+
         # create a checkout session (page hosted by stripe)
         try:
             checkout_session = stripe.checkout.Session.create(
-                customer_email=shipping_data['email'],
+                # customer email
+                customer_email=order_data['email'],
+                # payment method
                 payment_method_types=['card'],
+                # order line items for payment page
                 line_items=cart_line_items,
                 mode='payment',
+                metadata={
+                    'order': str(ref),
+                },
                 success_url="http://{}{}".format(host,
                                                  reverse('payment_success')),
                 cancel_url="http://{}{}".format(host,

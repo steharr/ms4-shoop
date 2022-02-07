@@ -22,6 +22,7 @@ def webhook(request):
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
 
+    # verify event came from stripe
     try:
         event = stripe.Webhook.construct_event(payload, sig_header, wh_secret)
     except ValueError as e:
@@ -33,5 +34,11 @@ def webhook(request):
     except Exception as e:
         return HttpResponse(content=e, status=400)
 
-    # Passed signature verification
+    # If no exception, passed signature verification
+    # Handle the checkout.session.completed event
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+    elif event['type'] == 'checkout.session.async_payment_failed':
+        session = event['data']['object']
+
     return HttpResponse(status=200)
