@@ -6,6 +6,9 @@ from products.models import Shoe
 
 class Order(models.Model):
 
+    ORDER_STATUS_CHOICES = (('A', 'Created'), ('B', 'Payed For'),
+                            ('C', 'In Transit'), ('D', 'Complete'))
+
     # order reference details
     order_number = models.CharField(max_length=32, editable=False)
     order_date = models.DateField(auto_now_add=True)
@@ -34,8 +37,10 @@ class Order(models.Model):
                                       decimal_places=2,
                                       default=0)
 
-    # profile details (to be added)
-    # stripe details (to be added)
+    # order status details
+    order_status = models.CharField(max_length=1,
+                                    choices=ORDER_STATUS_CHOICES,
+                                    default='A')
 
     def _generate_order_number(self):
         """
