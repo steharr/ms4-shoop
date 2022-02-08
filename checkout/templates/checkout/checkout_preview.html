@@ -2,13 +2,9 @@
 {% load static %}
 {% load range %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
-{% endblock%}
-
 {% block page_header %}
 <div class="container">
-    <h2 class="mt-2 text-center">Order Checkout</h2>
+    <h2 class="mt-2 text-center">Order Confirmation</h2>
     <hr>
 </div>
 {% endblock %}
@@ -89,10 +85,4 @@
     </div>
 </div>
 
-{% endblock %}
-
-{% block postload_js %}
-{{ block.super }}
-
-<script type="text/javascript" src="{% static 'checkout/js/checkout.js'%}"></script>
 {% endblock %}
