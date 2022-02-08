@@ -32,13 +32,67 @@ def webhook(request):
         # Invalid signature
         return HttpResponse(status=400)
     except Exception as e:
+        # Unknown exception
         return HttpResponse(content=e, status=400)
 
     # If no exception, passed signature verification
-    # Handle the checkout.session.completed event
-    if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
-    elif event['type'] == 'checkout.session.async_payment_failed':
-        session = event['data']['object']
+    print("WEBHOOK EVENT --> " + event['type'])
+
+    # Handle the event coming from the checkout
+    if event['type'] == 'payment_intent.created':
+        intent = event['data']['object']
+        append_payment_intent_to_order(intent)
+        return HttpResponse(
+            content=
+            f"Webhook recieved: {event['type']} | SUCCESS: Payment Intent Created",
+            status=200)
+
+    elif event['type'] == 'payment_intent.suceeded':
+        intent = event['data']['object']
+        try:
+            update_order_status_payment(intent)
+            return HttpResponse(
+                content=
+                f"Webhook recieved: {event['type']} | SUCCESS: Order status updated",
+                status=200)
+        except Exception as e:
+            return HttpResponse(
+                content=
+                f"Webhook recieved: {event['type']} | ERROR: Unsuccesful in updating order status due to {e}",
+                status=500)
+
+    elif event['type'] == 'payment_intent.payment_failed':
+        return HttpResponse(
+            content=
+            f"Webhook recieved: {event['type']} | ERROR: Payment was unsucessful",
+            status=500)
 
     return HttpResponse(status=200)
+
+
+def update_order_status_payment(intent):
+
+    # extract the order id from the intent
+    order_id = intent.metadata.order
+    order = Order.objects.get(pk=order_id)
+
+    # update the order status to payment recieved
+    if order.order_status == 'A':
+        order.order_status = 'B'
+
+    # save the order with the new order status
+    order.save()
+
+
+def append_payment_intent_to_order(intent):
+
+    # extract the order id from the intent
+    order_id = intent.metadata.order
+    order = Order.objects.get(pk=order_id)
+
+    # add the payment intent id to order in the database
+    payement_intent_id = intent.id
+    order.pid = payement_intent_id
+
+    # save the order with the pid
+    order.save()
