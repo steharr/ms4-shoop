@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load range %}
+{% load item_total %}
 
 {% block page_header %}
 <div class="container">
@@ -50,19 +50,19 @@
                                 </td>
                                 <td>UK <strong>{{ item.size }}</strong></td>
                                 <td>
-                                    <select data-shoe-size="{{ item.size }}" data-shoe-id="{{ item.shoe_id }}"
-                                        style="width:5rem;" class="form-select item-qty"
-                                        aria-label="Default select example">
-                                        <option value="0" {% if item.qty == 0%}selected{% endif %}>0</option>
-                                        {% for i in 5|range %}
-                                        <option value="{{i}}" {% if i == item.qty %}selected{% endif %}>{{ i }}</option>
-                                        {% endfor %}
-                                    </select>
+                                    {{ item.qty }}
                                 </td>
                                 <td>&euro;{{ item.shoe.price }}</td>
-                                <td>&euro;{{ item.item_price }}</td>
+                                <td>&euro;{{ item.shoe.price | item_total:item.qty }}</td>
                             </tr>
                             {% endfor %}
+                            <tr>
+                                <td colspan="6" class="text-end">
+                                    <p>Sub Total: &euro; XX.XX</p>
+                                    <p>Delivery Cost: &euro; XX.XX</p>
+                                    <h4>Grand Total: &euro;{{ grand_total }}</h4>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
