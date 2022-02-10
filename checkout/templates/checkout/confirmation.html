@@ -69,6 +69,17 @@
             </div>
             <div class="col-12 col-lg-6">
                 <h5>Shipping Details:</h5>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Name:</strong> {{ order.full_name }}</li>
+                    <li class="list-group-item"><strong>Email:</strong> {{ order.email }}</li>
+                    <li class="list-group-item"><strong>Phone:</strong> {{ order.phone_number }}</li>
+                    <li class="list-group-item"><strong>Address Line 1:</strong> {{ order.street1 }}</li>
+                    <li class="list-group-item"><strong>Address Line 2:</strong> {{ order.street2 }}</li>
+                    <li class="list-group-item"><strong>Town/City:</strong> {{ order.town_or_city }}</li>
+                    <li class="list-group-item"><strong>State:</strong> {{ order.county }}</li>
+                    <li class="list-group-item"><strong>Postcode:</strong> {{ order.postcode }}</li>
+                    <li class="list-group-item"><strong>Country:</strong> {{ order.country }}</li>
+                </ul>
             </div>
         </div>
     </div>

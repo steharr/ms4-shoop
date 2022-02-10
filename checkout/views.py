@@ -118,6 +118,12 @@ def create_checkout_session(request):
 
 
 def payment_success(request):
+
+    # clear the cart since the order was satisfied
+    if 'cart' in request.session:
+        del request.session['cart']
+
+    # extract details from the stripe checkout session
     session = stripe.checkout.Session.retrieve(request.GET['session_id'])
     customer = stripe.Customer.retrieve(session.customer)
     stripe_pid = session.payment_intent
@@ -126,6 +132,7 @@ def payment_success(request):
     order = Order.objects.get(stripe_pid=stripe_pid)
     line_items = OrderLineItem.objects.filter(order=order)
 
+    # render in the context
     context = {
         'session': session,
         'customer': customer,
