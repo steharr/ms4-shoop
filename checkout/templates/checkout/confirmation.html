@@ -12,7 +12,9 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        {{orders}}
+        Hello {{ customer }}, your order was satisfied!
+        <br>
+        The payment intent id was {{ stripe_pid }}
     </div>
 </div>
 

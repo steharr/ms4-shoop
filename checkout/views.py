@@ -5,6 +5,7 @@ from django.conf import settings
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Shoe
+from django.views.generic.base import TemplateView
 
 import stripe
 import json
@@ -97,10 +98,15 @@ def create_checkout_session(request):
                             'cart': json.dumps(cart),
                         },
                     },
-                    success_url="http://{}{}".format(
-                        host, reverse('payment_success')),
-                    cancel_url="http://{}{}".format(host,
-                                                    reverse('payment_cancel')),
+                    success_url="http://{}{}?session_id={{CHECKOUT_SESSION_ID}}"
+                    .format(
+                        host,
+                        reverse('payment_success'),
+                    ),
+                    cancel_url="http://{}{}".format(
+                        host,
+                        reverse('payment_cancel'),
+                    ),
                 )
             except Exception as e:
                 return str(e)
@@ -112,9 +118,15 @@ def create_checkout_session(request):
 
 
 def payment_success(request):
+    session = stripe.checkout.Session.retrieve(request.GET['session_id'])
+    customer = stripe.Customer.retrieve(session.customer)
+    stripe_pid = session.payment_intent
 
-    orders = OrderLineItem.objects.all
-    context = {'payment_status': 'success', 'orders': orders}
+    context = {
+        'session': session,
+        'customer': customer,
+        'stripe_pid': stripe_pid,
+    }
     return render(request, 'checkout/confirmation.html', context)
 
 
