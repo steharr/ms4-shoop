@@ -39,8 +39,6 @@ def webhook(request):
         return HttpResponse(content=e, status=400)
 
     # If no exception, passed signature verification
-    print("WEBHOOK EVENT --> " + event['type'])
-
     # Handle the event coming from the checkout
     if event['type'] == 'payment_intent.succeeded':
         # line_items = event['line_items']

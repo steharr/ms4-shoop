@@ -122,10 +122,15 @@ def payment_success(request):
     customer = stripe.Customer.retrieve(session.customer)
     stripe_pid = session.payment_intent
 
+    # extract the fulfilled order with the associated stripe pid
+    order = Order.objects.get(stripe_pid=stripe_pid)
+    line_items = OrderLineItem.objects.filter(order=order)
+
     context = {
         'session': session,
         'customer': customer,
-        'stripe_pid': stripe_pid,
+        'order': order,
+        'line_items': line_items,
     }
     return render(request, 'checkout/confirmation.html', context)
 
