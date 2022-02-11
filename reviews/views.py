@@ -51,8 +51,6 @@ def write_review(request, shoe_id):
 
     # render form with prefilled data
     review_form = ReviewForm(initial=prefill)
-    review_form.fields['shoe'].disabled = True
-    review_form.fields['user'].disabled = True
     context = {
         'shoe': shoe,
         'review_form': review_form,
