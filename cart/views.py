@@ -1,6 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from products.models import Shoe
+from django.contrib import messages
 
 
 def view_cart(request):
@@ -35,6 +36,9 @@ def add_to_cart(request, shoe_id):
             cart[shoe_id][size] = {}
             cart[shoe_id][size]['qty'] = 1
         request.session['cart'] = cart
+        messages.success(request, f"{shoe.name} (Size: {size}) added to cart!")
+    else:
+        messages.error(request, f"Error adding to cart, size not valid")
 
     return redirect(redirect_url)
 
@@ -54,9 +58,15 @@ def remove_from_cart(request, shoe_id):
         # update the client session cart
         request.session['cart'] = cart
 
+        # inform the user
+        shoe = get_object_or_404(Shoe, pk=shoe_id)
+        messages.info(request,
+                      f"Removed {shoe.name} (Size: {size}) from your cart")
+
         return HttpResponse(status=200)
 
     except Exception as e:
+        messages.error(request, f'Error removing cart item: {e}')
         return HttpResponse(status=500)
 
 
@@ -76,7 +86,13 @@ def update_cart(request, shoe_id):
         # update the client session cart
         request.session['cart'] = cart
 
+        # inform the user
+        shoe = get_object_or_404(Shoe, pk=shoe_id)
+        messages.info(request,
+                      f"Updated {shoe.name} (Size: {size}) qty to {new_qty}")
+
         return HttpResponse(status=200)
 
     except Exception as e:
+        messages.error(request, f'Error modifying cart: {e}')
         return HttpResponse(status=500)
