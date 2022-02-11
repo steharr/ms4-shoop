@@ -15,7 +15,6 @@
 </div>
 {% endblock %}
 
-
 {% block content %}
 <div class="container">
     {% include 'includes/refine_search_options.html' %}
@@ -53,10 +52,6 @@
                         <div class="d-flex justify-content-center">
                             <a href="{% url 'shoe_detail' shoe.id %}"
                                 class="btn btn-primary btn-shoe-detail text-sm-small me-1">View</a>
-                            <!--
-                            <a href="{% url 'add_to_cart' shoe.id %}"
-                                class="btn btn-primary btn-shoe-detail text-sm-small ms-1">Add to Cart</a>
-                            -->
                         </div>
                     </div>
                 </div>
