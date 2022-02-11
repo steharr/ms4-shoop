@@ -103,4 +103,12 @@ def edit_review(request, review_id):
 # delete reviews
 @login_required
 def delete_review(request, review_id):
-    pass
+    """
+    A view to allow the user
+    to delete their reviews
+    """
+    # get the associated review
+    review = Review.objects.get(pk=review_id)
+    # delete it
+    review.delete()
+    return redirect(reverse('view_reviews', args=[review.shoe.id]))
