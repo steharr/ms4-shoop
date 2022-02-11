@@ -15,7 +15,7 @@
                 <li class="list-group-item">{{ shoe.brand|title }}</li>
                 <li class="list-group-item">{{ shoe.category|title }}</li>
             </ul>
-            <a class="btn btn-primary" href="{% url 'write_review' shoe.id %}" role="button">Write Review</a>
+            <a class="btn btn-primary" href="{% url 'write_review' shoe.id %}" role="button">Write New Review</a>
         </div>
         <div class="col-12 col-md-8 reviews">
             {% if reviews %}
@@ -24,7 +24,7 @@
                 <div class="card-header d-flex justify-content-around">
                     <div class="user-details">
                         <strong>By:</strong>
-                        {{ review.user.email }}
+                        {{ review.user }}
                     </div>
                     <div class="review-rating">
                         <div class="d-flex align-items-center pt-1">
@@ -40,6 +40,12 @@
                     <div class="review-date">
                         {{ review.date|date:"d/m/Y" }}
                     </div>
+                    {% if user == review.user %}
+                    <div>
+                        <a class="btn btn-outline-success" href="{% url 'edit_review' review.id %}">Edit</a>
+                        <a class="btn btn-outline-danger" href="{% url 'delete_review' review.id %}">Delete</a>
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="card-body">
                     <p class="card-text">

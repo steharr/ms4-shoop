@@ -63,15 +63,31 @@ def write_review(request, shoe_id):
 
 # edit reviews
 @login_required
-def edit_review(request, shoe_id):
+def edit_review(request, review_id):
 
     # get the user
     user = request.user
 
     # get the associated review
-    review = Review.objects.filter(user=user).filter(shoe__id=shoe_id)
+    review = Review.objects.get(pk=review_id)
 
-    pass
+    # get the associated shoe
+    shoe = Shoe.objects.get(pk=review.shoe.id)
+
+    # render form with prefilled data
+    review_form = ReviewForm(instance=review)
+    review_form.fields['shoe'].disabled = True
+    review_form.fields['user'].disabled = True
+
+    context = {
+        'review': review,
+        'shoe': shoe,
+        'review_form': review_form,
+    }
+
+    template = 'reviews/edit_review.html'
+
+    return render(request, template, context)
 
 
 # delete reviews

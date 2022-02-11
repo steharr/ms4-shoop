@@ -10,17 +10,18 @@
             <div class="d-flex justify-content-center">
                 <img src="../../media/{{ shoe.image }}" class="img-fluid w-75" alt="{{ shoe.name }}">
             </div>
-            <ul class="list-group list-group-flush mb-3">
+            <ul class="list-group list-group-flush mb-3 text-center">
                 <li class="list-group-item">&euro; {{ shoe.price }}</li>
                 <li class="list-group-item">{{ shoe.brand|title }}</li>
                 <li class="list-group-item">{{ shoe.category|title }}</li>
             </ul>
             <div class="d-flex justify-content-center">
-                <a class="btn btn-primary" href="{% url 'view_reviews' shoe.id %}" role="button">View Reviews</a>
+                <a class="btn btn-primary" href="{% url 'view_reviews' shoe.id %}" role="button">View All
+                    Reviews</a>
             </div>
         </div>
         <div class="col-8">
-            <form action="{% url 'write_review' shoe.id %}" method="POST">
+            <form action="{% url 'edit_review' review.id %}" method="POST">
                 {% csrf_token %}
                 {{ review_form.shoe|as_crispy_field }}
                 {{ review_form.user|as_crispy_field }}

@@ -14,5 +14,7 @@ class ReviewForm(forms.ModelForm):
         Disables user and shoe fields
         """
         super().__init__(*args, **kwargs)
-        self.fields['shoe'].widget = forms.HiddenInput()
-        self.fields['user'].widget = forms.HiddenInput()
+        # self.fields['shoe'].widget = forms.HiddenInput()
+        # self.fields['user'].widget = forms.HiddenInput()
+        self.fields['rating'].widget.attrs['min'] = 0
+        self.fields['rating'].widget.attrs['max'] = 5
