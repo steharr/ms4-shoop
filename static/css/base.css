@@ -20,8 +20,6 @@ h6 {
     font-weight: 700;
 }
 
-
-
 /* home */
 .home-image-md {
     background-image: url('/media/homepage.jpg');
@@ -46,6 +44,14 @@ h6 {
     color: #0275d8;
 }
 
+/* messages */
+.messages-container {
+    position: fixed;
+    font-size: 1rem;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999999999;
+}
 
 /* browse */
 .btn-shoe-detail {
