@@ -102,5 +102,5 @@ def edit_review(request, review_id):
 
 # delete reviews
 @login_required
-def delete_review(request, shoe_id):
+def delete_review(request, review_id):
     pass
