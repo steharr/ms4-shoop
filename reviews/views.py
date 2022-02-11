@@ -48,7 +48,9 @@ def write_review(request, shoe_id):
             pass
 
     # render form with prefilled data
-    review_form = ReviewForm(prefill)
+    review_form = ReviewForm(initial=prefill)
+    review_form.fields['shoe'].disabled = True
+    review_form.fields['user'].disabled = True
     context = {
         'shoe': shoe,
         'review_form': review_form,
@@ -60,5 +62,19 @@ def write_review(request, shoe_id):
 
 
 # edit reviews
+@login_required
+def edit_review(request, shoe_id):
+
+    # get the user
+    user = request.user
+
+    # get the associated review
+    review = Review.objects.filter(user=user).filter(shoe__id=shoe_id)
+
+    pass
+
 
 # delete reviews
+@login_required
+def delete_review(request, shoe_id):
+    pass
