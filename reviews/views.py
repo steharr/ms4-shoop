@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.urls import reverse
 from .models import Review
 from products.models import Shoe
@@ -38,10 +39,12 @@ def write_review(request, shoe_id):
         review_form = ReviewForm(request.POST)
         if review_form.is_valid():
             review_form.save()
+            messages.success(request, 'Review was submitted!')
             return redirect(reverse('view_reviews', args=[shoe_id]))
         else:
-            # TODO: messages
-            pass
+            messages.error(
+                request,
+                'Review could not be submitted, please ensure form was valid')
 
     shoe = get_object_or_404(Shoe, pk=shoe_id)
     prefill = {
@@ -79,10 +82,12 @@ def edit_review(request, review_id):
         review_form = ReviewForm(request.POST, instance=review)
         if review_form.is_valid():
             review_form.save()
+            messages.success(request, 'Review edited!')
             return redirect(reverse('view_reviews', args=[shoe.id]))
         else:
-            # TODO: messages
-            pass
+            messages.error(
+                request,
+                'Review could not be edited, please ensure form was valid')
 
     # render form with prefilled data
     review_form = ReviewForm(instance=review)
@@ -109,4 +114,5 @@ def delete_review(request, review_id):
     review = Review.objects.get(pk=review_id)
     # delete it
     review.delete()
+    messages.success(request, 'Review was deleted!')
     return redirect(reverse('view_reviews', args=[review.shoe.id]))
