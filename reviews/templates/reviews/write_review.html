@@ -2,6 +2,15 @@
 {% load static %}
 {% load range %}
 
+{% block page_header %}
+<div class="container">
+    <h2 class="mt-2 text-center">Write New Review</h2>
+    <hr>
+</div>
+{% endblock %}
+
+
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -10,7 +19,7 @@
             <div class="d-flex justify-content-center">
                 <img src="../../media/{{ shoe.image }}" class="img-fluid w-75" alt="{{ shoe.name }}">
             </div>
-            <ul class="list-group list-group-flush mb-3">
+            <ul class="list-group list-group-flush mb-3 text-center">
                 <li class="list-group-item">&euro; {{ shoe.price }}</li>
                 <li class="list-group-item">{{ shoe.brand|title }}</li>
                 <li class="list-group-item">{{ shoe.category|title }}</li>
@@ -20,21 +29,38 @@
             </div>
         </div>
         <div class="col-8">
-            <form action="{% url 'write_review' shoe.id %}" method="POST">
-                {% csrf_token %}
-                {{ review_form.shoe|as_crispy_field }}
-                {{ review_form.user|as_crispy_field }}
-                <div class="row">
-                    <div class="col-4">
-                        {{ review_form.rating|as_crispy_field }}
+            <div class="card">
+                <div class="card-header d-flex justify-content-around">
+                    <div class="user-details">
+                        <strong>Author:</strong>
+                        {{ user }}
                     </div>
-                    <div class="col-8" id="review stars">
-
+                    <div class="review-date">
+                        <strong>Date:</strong>
+                        {% now "d/m/Y" %}
                     </div>
                 </div>
-                {{ review_form.details|as_crispy_field }}
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
+                <div class="card-body">
+                    <form action="{% url 'write_review' shoe.id %}" method="POST">
+                        {% csrf_token %}
+                        {{ review_form.shoe|as_crispy_field }}
+                        {{ review_form.user|as_crispy_field }}
+                        <div class="row">
+                            <div class="col-4">
+                                {{ review_form.rating|as_crispy_field }}
+                            </div>
+                            <div class="col-8" id="review stars">
+
+                            </div>
+                        </div>
+                        {{ review_form.details|as_crispy_field }}
+                        <div class="d-flex justify-content-center mt-2">
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

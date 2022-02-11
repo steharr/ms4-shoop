@@ -2,6 +2,14 @@
 {% load static %}
 {% load range %}
 
+{% block page_header %}
+<div class="container">
+    <h2 class="mt-2 text-center">Edit Existing Review</h2>
+    <hr>
+</div>
+{% endblock %}
+
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -21,22 +29,37 @@
             </div>
         </div>
         <div class="col-8">
-            <form action="{% url 'edit_review' review.id %}" method="POST">
-                {% csrf_token %}
-                {{ review_form.shoe|as_crispy_field }}
-                {{ review_form.user|as_crispy_field }}
-                <div class="row">
-                    <div class="col-4">
-                        {{ review_form.rating|as_crispy_field }}
+            <div class="card">
+                <div class="card-header d-flex justify-content-around">
+                    <div class="user-details">
+                        <strong>Author:</strong>
+                        {{ user }}
                     </div>
-                    <div class="col-8" id="review stars">
-
+                    <div class="review-date">
+                        <strong>Date:</strong>
+                        {{ review.date|date:"d/m/Y" }}
                     </div>
                 </div>
-                {{ review_form.details|as_crispy_field }}
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
+                <div class="card-body">
+                    <form action="{% url 'edit_review' review.id %}" method="POST">
+                        {% csrf_token %}
+                        {{ review_form.shoe|as_crispy_field }}
+                        {{ review_form.user|as_crispy_field }}
+                        <div class="row">
+                            <div class="col-4">
+                                {{ review_form.rating|as_crispy_field }}
+                            </div>
+                            <div class="col-8" id="review stars">
+
+                            </div>
+                        </div>
+                        {{ review_form.details|as_crispy_field }}<div class="d-flex justify-content-center mt-2">
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
