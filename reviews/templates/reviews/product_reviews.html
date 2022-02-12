@@ -9,6 +9,10 @@
 </div>
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'reviews/css/reviews.css'%}">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -37,7 +41,7 @@
                                 <div class="d-flex jusifty-content-center align-items-center pt-1">
                                     {% for star in 5|range %}
                                     {% if star <= review.rating %}
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star golden-star"></i>
                                     {% else %}
                                     <i class="far fa-star"></i>
                                     {% endif %}
