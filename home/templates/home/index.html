@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'banners/css/banners.css'%}">
+{% endblock %}
+
 {% block content %}
 {% if banner %}
-<div class="container-fluid text-center fs-3">
+<div class="container-fluid text-center fs-3" id="homepage-sales-banner-container">
     {{ banner.full_banner_message }}
 </div>
 {% endif %}
@@ -24,4 +28,11 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+
+{% block postload_js %}
+{{ block.super }}
+{{ banner|json_script:"homepage-sales-banner-context"}}
+<script src="{% static 'home/js/home.js' %}"></script>
 {% endblock %}
