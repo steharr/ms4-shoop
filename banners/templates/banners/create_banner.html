@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load range %}
+
+{% block page_header %}
+<div class="container">
+    <h2 class="mt-2 text-center">Create New Sales Banner</h2>
+    <hr>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'banners/css/banners.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form action="#" method="POST">
+                {% csrf_token %}
+                {{banner_form.message|as_crispy_field}}
+                {{banner_form.theme|as_crispy_field}}
+                {{banner_form.discount|as_crispy_field}}
+                {{banner_form.price_threshold|as_crispy_field}}
+                <div class="d-flex justify-content-center my-2">
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <a class="btn btn-secondary" href="{% url 'banner_maintenance' %}">Go Back</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-6">
+            <h5 class="text-center">Preview:</h5>
+
+            <div class="d-flex justify-content-center align-items-center w-100 my-3">
+                <div class="urgent" id="banner"> <strong id="banner-message">(Message)</strong>: <strong
+                        id="banner-discount">(**)</strong>% off
+                    all orders over &euro; <strong id="banner-threshold">(Price
+                        Threshold)</strong></div>
+            </div>
+
+            <p class="text-center"><strong>Note:</strong> This will be displayed on the top of the site homepage and
+                chosen discount will be applied to all orders placed</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postload_js %}
+<script src="{% static 'banners/js/banners.js' %}"></script>
+{% endblock %}

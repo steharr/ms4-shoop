@@ -1,0 +1,14 @@
+.urgent {
+    background-color: #f3ca20;
+    color: #000;
+}
+
+.moderate {
+    background-color: #1e847f;
+    color: #fff;
+}
+
+.reminder {
+    background-color: #6fc66c;
+    color: #fff;
+}
