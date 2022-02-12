@@ -1,22 +1,25 @@
-[
-    {
+[{
         "pk": 1,
         "model": "products.brand",
-        "fields": { "name": "nike", "friendly_name": "Nike" }
+        "fields": {
+            "name": "nike",
+            "friendly_name": "Nike"
+        }
     },
     {
         "pk": 2,
         "model": "products.brand",
-        "fields": { "name": "office", "friendly_name": "Office" }
+        "fields": {
+            "name": "office",
+            "friendly_name": "Office"
+        }
     },
     {
         "pk": 3,
         "model": "products.brand",
-        "fields": { "name": "vagabond", "friendly_name": "Vagabond Shoemakers" }
-    },
-    {
-        "pk": 4,
-        "model": "products.brand",
-        "fields": { "name": "new_balance", "friendly_name": "New Balance" }
+        "fields": {
+            "name": "vagabond",
+            "friendly_name": "Vagabond Shoemakers"
+        }
     }
 ]

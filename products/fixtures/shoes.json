@@ -8,7 +8,7 @@
             "brand": 1,
             "name": "Nike Air Max 90",
             "description": "The Air Max 90 is an essential for any Nike collection. Constructed from a mix of leather, synthetic and textile uppers in bold colours and safari-pattern graphics. Featuring classic Air Max branding, padded collars, a foam midsole, sitting on a rubber Waffle outsole with a visible Max air unit.",
-            "image": "nike-airmax90.png",
+            "image": "mens-trainers-2.png",
             "price": 50.00
         }
     },
@@ -16,42 +16,85 @@
         "pk": 2,
         "model": "products.shoe",
         "fields": {
-            "sku": "SHOOP20220101",
-            "category": 2,
+            "sku": "SHOOP20220102",
+            "category": 1,
             "gender": "m",
-            "brand": 2,
-            "name": "Test2",
-            "description": "Test2",
-            "image": "nike-airmax90.png",
-            "price": 25.00
+            "brand": 1,
+            "name": "Nike Forum Mid Trainers",
+            "description": "A trainer that made history on the streets in the '80s, the Forum Mid trainers are back. Constructed from leather uppers, featuring lace-up fastening with adjustable strap, OG adidas three stripe branding, sitting on a rubber cupsole. In a white and pink colourway.",
+            "image": "mens-trainers-1.jpg",
+            "price": 65.00
         }
     },
     {
         "pk": 3,
         "model": "products.shoe",
         "fields": {
-            "sku": "SHOOP20220101",
+            "sku": "SHOOP20220103",
             "category": 2,
             "gender": "m",
-            "brand": 2,
-            "name": "Test3",
-            "description": "Test3",
-            "image": "nike-airmax90.png",
-            "price": 30.00
+            "brand": 3,
+            "name": "Vagabond Premium D Ring Boots",
+            "description": "A comfortable, slip on, Chelsea silhouette. Made from hydrophobic, oiled nubuck uppers and moisture-wicking microfiber lining. Featuring elasticated side panels, a removable, anatomically shaped cork-latex footbed, completed with a light sole made from synthetic materials.",
+            "image": "mens-boots-1.jpg",
+            "price": 180.00
         }
     },
     {
         "pk": 4,
         "model": "products.shoe",
         "fields": {
-            "sku": "SHOOP20220101",
+            "sku": "SHOOP20220104",
             "category": 3,
             "gender": "m",
-            "brand": 4,
-            "name": "Test4",
-            "description": "Test4",
-            "image": "nike-airmax90.png",
-            "price": 12.30
+            "brand": 2,
+            "name": "Marton Chisel Toe Derby Shoes",
+            "description": "The Marton derby shoes are perfect for back to the OFFICE. Featuring brown faux leather uppers, derby detailing, a lace-up front, and a comfy sole for all day wear",
+            "image": "mens-smart-1.jpg",
+            "price": 180.00
+        }
+    },
+    {
+        "pk": 5,
+        "model": "products.shoe",
+        "fields": {
+            "sku": "SHOOP20220105",
+            "category": 5,
+            "gender": "f",
+            "brand": 2,
+            "name": "Melani Glam Mules",
+            "description": "The Melani mules are full on glam, making you stand out wherever you are. Featuring black uppers in a slip-on design, an embellished strap, complete with pointed toes and a stiletto heel.",
+            "image": "womens-heels-1.png",
+            "price": 200.00
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.shoe",
+        "fields": {
+            "sku": "SHOOP20220106",
+            "category": 5,
+            "gender": "f",
+            "brand": 2,
+            "name": "Mischa Cut Out Shoe Boots",
+            "description": "Get party ready with the Mischa shoe boots. Feauring a cut out design, buckle fastening with a mini charm, open toes and a block heel.",
+            "image": "womens-heels-2.png",
+            "price": 50.00
+        }
+    },
+    {
+        "pk": 7,
+        "model": "products.shoe",
+        "fields": {
+            "sku": "SHOOP20220107",
+            "category": 4,
+            "gender": "f",
+            "brand": 2,
+            "name": "Fold Lace Up Runners",
+            "description": "A causual classic for all",
+            "image": "womens-casual-1.jpg",
+            "price": 50.00
         }
     }
+
 ]
