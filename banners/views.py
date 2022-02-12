@@ -33,9 +33,34 @@ def create_banner(request):
     return render(request, template, context)
 
 
-def edit_banner(request, banner_id):
-    pass
+def edit_banner(request):
+
+    banner = Banner.objects.get()
+
+    # post handler
+    if request.method == "POST":
+        banner_form = BannerForm(request.POST, instance=banner)
+        if banner_form.is_valid():
+            # save new banner
+            banner_form.save()
+            messages.success(request, "Sales banner edited successfully!")
+            return redirect(reverse('banner_maintenance'))
+        else:
+            messages.warning(request,
+                             "Error editing sales banner, please try again")
+            return redirect(reverse('banner_maintenance'))
+
+    banner_form = BannerForm(instance=banner)
+    context = {'banner_form': banner_form, 'banner': banner}
+    template = 'banners/edit_banner.html'
+
+    return render(request, template, context)
 
 
-def delete_banner(request, banner_id):
-    pass
+def delete_banner(request):
+    if Banner.objects.all().count() > 0:
+        Banner.objects.all().delete()
+        messages.info(request, "Sales banner deleted")
+    else:
+        messages.warning(request, "No banner available to delete")
+    return redirect(reverse('banner_maintenance'))

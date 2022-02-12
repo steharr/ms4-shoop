@@ -33,12 +33,11 @@
             <h5 class="text-center">Preview:</h5>
 
             <div class="d-flex justify-content-center align-items-center w-100 my-3">
-                <div class="urgent" id="banner"> <strong id="banner-message">(Message)</strong>: <strong
-                        id="banner-discount">(**)</strong>% off
-                    all orders over &euro; <strong id="banner-threshold">(Price
-                        Threshold)</strong></div>
+                <div class="{% if banner.theme == 'U'%}urgent{% elif banner.theme == 'M' %}moderate{% else %}reminder{% endif %}"
+                    id="banner"> <strong id="banner-message">{{ banner.message }}</strong>: <strong
+                        id="banner-discount">{{ banner.discount }}</strong>% off
+                    all orders over &euro; <strong id="banner-threshold">{{ banner.price_threshold }}</strong></div>
             </div>
-
             <p class="text-center"><strong>Note:</strong> This will be displayed on the top of the site homepage and
                 chosen discount will be applied to all orders placed</p>
         </div>

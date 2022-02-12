@@ -20,13 +20,13 @@
                     <h5><u>New Banner</u></h5>
                     <p>Create a new sales banner for the Shoop site homepage
                         <br><span class="badge rounded-pill bg-info text-dark">
-                            <strong>Note:</strong> New banner will replace existing ones
+                            <strong>Note:</strong> New banner will replace existing one
                         </span>
                     </p>
                 </a>
 
                 <!-- Edit Banner -->
-                <a href="#" class="list-group-item list-group-item-action">
+                <a href="{% url 'edit_banner' %}" class="list-group-item list-group-item-action">
                     <h5><u>Edit Banner</u></h5>
                     <p>Edit the current sales banner on the site</p>
                 </a>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>
-                                <a class="btn btn-outline-danger" href="{}">Confirm
+                                <a class="btn btn-outline-danger" href="{% url 'delete_banner' %}">Confirm
                                     Delete</a>
                             </div>
                         </div>
