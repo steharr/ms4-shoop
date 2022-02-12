@@ -1,7 +1,7 @@
 from .models import Banner
 
 
-def sale_banner(request):
+def sales_banners(request):
     banner = request.session.get('banner', {})
     context = {'banner': banner}
 

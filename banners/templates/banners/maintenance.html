@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load range %}
+
+{% block page_header %}
+<div class="container">
+    <h2 class="mt-2 text-center">Sales Banner Maintenance</h2>
+    <hr>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="list-group">
+
+                <!-- New Banner -->
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <h5><u>New Banner</u></h5>
+                    <p>Create a new sales banner for the Shoop site homepage
+                        <br><span class="badge rounded-pill bg-info text-dark">
+                            <strong>Note:</strong> New banners will replace existing ones
+                        </span>
+                    </p>
+                </a>
+
+                <!-- Edit Banner -->
+                <a href="#" class="list-group-item list-group-item-action">
+                    <h5><u>Edit Banner</u></h5>
+                    <p>Edit the current sales banner on the site</p>
+                </a>
+
+
+                <!-- Delete Banner -->
+                <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal"
+                    data-bs-target="#deleteModal">
+                    <h5><u>Delete Banner</u></h5>
+                    <p>Delete the banner on the site
+                        <br>
+                        <span class="badge rounded-pill bg-warning text-dark">
+                            <strong>Note:</strong> This action is irreversible
+                        </span>
+                    </p>
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Please Confirm</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete the current sales banner? This action is
+                                irreversible..
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>
+                                <a class="btn btn-outline-danger" href="#">Confirm
+                                    Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

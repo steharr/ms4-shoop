@@ -89,7 +89,8 @@
                                 {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
                                 <li>
-                                    <a class="dropdown-item" href="#">Manage Sales Banners</a>
+                                    <a class="dropdown-item" href="{% url 'banner_maintenance' %}">Manage Sales
+                                        Banners</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="#">Product Management</a>
