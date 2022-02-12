@@ -10,6 +10,3 @@ class Banner(models.Model):
         default=0, validators=[MaxValueValidator(30),
                                MinValueValidator(0)])
     price_threshold = models.DecimalField(max_digits=5, decimal_places=2)
-
-    def __str__(self):
-        return self.name

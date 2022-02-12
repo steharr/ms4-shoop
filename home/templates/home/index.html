@@ -2,6 +2,11 @@
 {% load static %}
 
 {% block content %}
+{% if banner %}
+<div class="container-fluid text-center fs-3">
+    {{ banner.full_banner_message }}
+</div>
+{% endif %}
 <div class="container-fluid h-100">
     <div class="row h-100">
         <div class="col-lg-4 d-flex justify-content-center align-items-center home-image-md">
