@@ -91,6 +91,7 @@ TEMPLATES = [
 
                 # custom context processors
                 'cart.contexts.cart_contents',
+                'banners.contexts.sales_banners',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
