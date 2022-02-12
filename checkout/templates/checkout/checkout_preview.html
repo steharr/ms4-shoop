@@ -22,9 +22,9 @@
                     <button type="submit" class="btn btn-success my-2" id="checkout-button">
                         <strong>Pay Securely <i class="fas fa-lock"></i></strong>
                     </button>
-                    <input type="hidden" name="delivery_cost" value="3.00">
+                    <input type="hidden" name="delivery_cost" value="{{ delivery_cost }}">
                     <input type="hidden" name="grand_total" value="{{ grand_total }}">
-                    <input type="hidden" name="order_total" value="50.00">
+                    <input type="hidden" name="order_total" value="{{ order_total }}">
                 </div>
             </form>
         </div>
@@ -65,8 +65,8 @@
                         {% endfor %}
                         <tr>
                             <td colspan="6" class="text-end">
-                                <p>Sub Total: &euro; XX.XX</p>
-                                <p>Delivery Cost: &euro; XX.XX</p>
+                                <p>Sub Total: &euro; {{order_total}}</p>
+                                <p>Delivery Cost: &euro; {{ delivery_cost }}</p>
                                 <h4>Grand Total: &euro;{{ grand_total }}</h4>
                             </td>
                         </tr>

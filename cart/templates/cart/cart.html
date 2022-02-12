@@ -54,8 +54,8 @@
                     {% endfor %}
                     <tr>
                         <td colspan="6" class="text-end">
-                            <p>Sub Total: &euro; XX.XX</p>
-                            <p>Delivery Cost: &euro; XX.XX</p>
+                            <p>Sub Total: &euro; {{ order_total }}</p>
+                            <p>Delivery Cost: &euro; {{ delivery_cost }}</p>
                             <h4>Grand Total: &euro;{{ grand_total }}</h4>
                             <a href="{% url 'checkout_preview' %} " class="btn btn-success">
                                 <strong>Continue to Checkout <i class="fas fa-shipping-fast"></i></strong>
