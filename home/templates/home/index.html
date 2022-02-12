@@ -8,7 +8,7 @@
 {% block content %}
 {% if banner %}
 <div class="container-fluid text-center fs-3" id="homepage-sales-banner-container">
-    {{ banner.full_banner_message }}
+    {{ banner.full_banner_message|safe }}
 </div>
 {% endif %}
 <div class="container-fluid h-100">
