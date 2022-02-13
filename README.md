@@ -48,6 +48,7 @@ To plan out the scope of the site, a list of minimum viable product features wer
 ---
 
 ### **Structure Plane**
+*( -- SECTION INCOMPLETE --)*
 
 #### **Database Schema** 
 <!-- diagram   -->
@@ -63,10 +64,12 @@ To plan out the scope of the site, a list of minimum viable product features wer
 ---
 
 ### **Skeleton Plane**
+*( -- SECTION INCOMPLETE --)*
 
 ---
 
 ### **Surface Plane**
+*( -- SECTION INCOMPLETE --)*
 
 **Color Palette**
 
@@ -75,6 +78,7 @@ To plan out the scope of the site, a list of minimum viable product features wer
 ---
 
 ### **Features** 
+*( -- SECTION INCOMPLETE --)*
 
 #### **Existing Features**
 
@@ -119,7 +123,8 @@ Used for cloud storage of site media files
 ---
 
 ### **Testing**
-Please see **** for details on the testing carried out for this project
+*( -- SECTION INCOMPLETE --)*
+Please see [TESTING.md](TESTING.md) for details on the testing carried out for this project
 
 ---
 
@@ -204,12 +209,14 @@ This website is deployed on [Heroku](https://id.heroku.com/login). The static fi
       * **Note:** *At this point I could have set up automatic deploys to heroku everytime I pushed my changes to github, however I decided against doing this and instead only pushing to heroku whenever the project was stable after completing each new feature*
 
 #### **Setting up S3 Bucket**
+*( -- SECTION INCOMPLETE --)*
 
 1. 
 
 ---
 
 ### **Credits**
+*( -- SECTION INCOMPLETE --)*
 
 #### **Code**
 #### **Images**
