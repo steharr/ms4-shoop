@@ -5,6 +5,8 @@ Shoop is a fictional online eCommerce website for shoes where users can buy and 
 
 This project was completed for my **Code Institute Milestone 4 Project**. The site is built using **HTML, CSS, Bootstrap & Javascript** for the front end and **Python, Django, PostgreSQL and AWS S3** for the back end. It is deployed on **Heroku** at the following location: **https://ms4-shoop.herokuapp.com/**
 
+**Note:** I was unable to complete this project in time for the given deadline. Therefore this README is incomplete, sections with further work needed are marked with the phrase: *( -- SECTION INCOMPLETE --)*
+
 ## **UX**
 The **five planes of user experience design** developed by Jesse James Garrett was used as the conceptual framework for the development process of this site
 
@@ -42,9 +44,9 @@ The overall objective of Shoop is to be a easy-to-use eCommerce website that off
 ### **Scope Plane**
 To plan out the scope of the site, a list of minimum viable product features were compiled to help with development. A second list of *"nice-to-have"* features were compiled that if feasible, would be targetted in order to improve the overall experience of the site.
 
-<!-- **Group 1: Minimum Viable Product Features**  
+**Group 1: Minimum Viable Product Features**  
 
-**Group 2: Nice to Have Features**   -->
+<!-- **Group 2: Nice to Have Features** -->
 ---
 
 ### **Structure Plane**
