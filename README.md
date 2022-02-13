@@ -167,13 +167,45 @@ Please see **** for details on the testing carried out for this project
 
 ### **Deployment**
 
-This website is deployed on [Heroku](https://id.heroku.com/login). The steps taken to deploy the site are detailed below:
+This website is deployed on [Heroku](https://id.heroku.com/login). The static files and media files for the site are stored on an [Amazon S3](https://aws.amazon.com/s3/?did=ft_card&trk=ft_card) cloud storage bucket. The steps taken to deploy the site are detailed below:
 
-1. In order to prepare my website before it was deployed to Heroku, I first created a `requirements.txt` file using the pip command `pip freeze > requirements.txt` in a terminal in VSCode. This extracted all the dependencies of my project that were installed in my virtual environment into a .txt file which Heroku could use to build my project when it is being deployed.
+#### **Creating a DB**
+1. I created a new app on my heroku profile called **ms4-shoop**
+1. I provisioned a **Postgres** database for the website in the resouces section of the heroku database
+1. To wire up my project to this database, I carried out the following steps:
+   * I installed **dj_database_url** and **psycopg2-binary** using pip
+   * I added these dependencies to my **requirements.txt** file using the `pip freeze > requirements.txt` command
+   * In my projects django **settings.py** file I added a new database configuration by adjusting the **DATABASES** constant (shown below). The **DATABASE_URL** is available in the config variables of the Heroku app dashboard.
 
-2. I also created a `Procfile` which contained the instruction: 
+      <img src="docs/deployment/database-setup.png" alt="db setup" width="300"/> 
+   * I then ran django migrations to set up all models of my app in the new postgres database. Commands: `./manage.py makemigrations` and `./manage.py migrate`
+   * I loaded my fixtures in the new database by using the `./manage.py loaddata *JSON FILENAME*` for each fixture.
+   * I created a superuser for the new database using the `./manage.py create superuser` command
 
-3. Then in Heroku, I created a new app called **ms3-shoop** and selected Europe as the region.
+#### **Deploying to Heroku**
+1. I ran the command `pip install gunicorn` to install the gunicorn package which acts as the webserver for the site. (Alse freezed this into the requirements file)
+
+1. I also created a `Procfile` which contained the instruction: `web: gunicorn shoop.wsgi:application` to insturct heroku to create a web dyno to serve the app.
+
+1. I logged into my heroku profile from a terminal in VScode. I initialized a heroku git remote for my local project using the following command `heroku git:remote -a ms4-shoop`
+
+1. I then temporarily disabled the heroku collectstatic in shoop heroku app to prepare for the deployment *(As the static files were going to be stored on the S3 bucket to be setup in later steps)*. This was achieved using the command `heroku config:set DISABLE_COLLECTSTAIC=1` 
+
+1. I added the domain of the shoop heroku app to the list of **ALLOWED_APPS** in my projects **settings.py** file.
+
+      <img src="docs/deployment/hosts-setup.png" alt="domain allowed hosts" width="500"/> 
+1. I also adjusted the **settings.py** file so that development related configurations werent going to be deplyed into production. These are shown below:
+   * Ensuring debug was only switched on in my development environment
+   * Ensuring that a django SECRET_KEY was not deployed into the productive environment
+
+      <img src="docs/deployment/development-setup.png" alt="development setup" width="500"/> 
+1. I then pushed the project to heroku using the command `git push heroku main`. Heroku then proceeded to build my app
+
+      * **Note:** *At this point I could have set up automatic deploys to heroku everytime I pushed my changes to github, however I decided against doing this and instead only pushing to heroku whenever the project was stable after completing each new feature*
+
+#### **Setting up S3 Bucket**
+
+1. 
 
 ---
 
