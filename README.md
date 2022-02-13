@@ -1,18 +1,16 @@
-# **Shoop**
+# **[Shoop](https://ms4-shoop.herokuapp.com/)**
+<img src="docs/mockup/mockup-shoop.png" alt="mockup of the shoop website" width="500"/> 
 
 Shoop is a fictional online eCommerce website for shoes where users can buy and review a variety of different shoe types
 
-This project was completed for my **Code Institute Milestone 4 Project**. The site is built using **HTML, CSS, Bootstrap & Javascript** for the front end and **Python, Django, Postgres and AWS S3** for the back end. It is deployed on Heroku
+This project was completed for my **Code Institute Milestone 4 Project**. The site is built using **HTML, CSS, Bootstrap & Javascript** for the front end and **Python, Django, Postgres and AWS S3** for the back end. It is deployed on **Heroku** at the following location: **https://ms4-shoop.herokuapp.com/**
 
 ## **UX**
 The **five planes of user experience design** developed by Jesse James Garrett was used as the conceptual framework for the development process of this site
 
 ### **Strategy Plane**
 
-<!-- intro -->
-
-<!-- descript of users -->
-
+The overall objective of Shoop is to be a easy-to-use eCommerce website that offers a wide variety of trendy designer shoes for site viewers. A unique feature of Shoop that sets it apart from other shoe sellers is its review functionality. Users can write reviews and give ratings on shoes that they have bought. Review data is visible on the site for all viewers to see and allows them to make educated decisions on purchases. The site owners also occasionally will run flash sales to encourage users to buy. They therefore require these sales to be visible to the viewers on the site's landing page. With these objectives in mind, a list of user stories was created to facilitate the development of the site. 
 
 ### **User Stories**
 
@@ -26,22 +24,19 @@ The **five planes of user experience design** developed by Jesse James Garrett w
 7. As a site viewer, I want to purchase products in the cart
 8. As a site viewer, I want to review items in the store
 9. As a site viewer, I want to see other peoples reviews and what the overall score for an item is
-10. As a site viewer, I want to register a profile in the store
-11. As a site viewer, I want to be able to login to that profile in the store
-12. As a site viewer, I want to save my delivery details in my profile
-13. As a site viewer, I want to see my reviews in the profile section
+
 
 #### Site Viewers
 1. As I site owner, I want to edit specific products in the store
 2. As I site owner, I want to add new products to the store
 3. As I site owner, I want to update current products in the store
 4. As I site owner, I want to delete current products in the store
-5. As I site owner, I want to add Sale banners to the store
-6. As I site owner, I want to delete Sale banners to the store
+5. As I site owner, I want to add sale banners to the store
+6. As I site owner, I want to delete sale banners to the store
 7. As I site owner, I want to update sale banners to the store
 
-<!-- ### **Scope Plane**
-To plan out the scope of the site, I compiled a list of features that were needed in order to satisify the user stories of the site. These were the features that I would need completed for a minimun viable product and ranked by order of importance. An additional group of ***Nice to have*** features were also compiled that if feasible could be targetted to further improve the overall experience of the site -->
+### **Scope Plane**
+To plan out the scope of the site, a list of minimum viable product features were compiled to help with development. A second list of 'nice-to-have' features were compiled that would be worked on if 
 
 <!-- **Group 1: Minimum Viable Product Features**  
 
