@@ -55,13 +55,42 @@ To plan out the scope of the site, a list of minimum viable product features wer
 #### **Database Schema** 
 <!-- diagram   -->
 
-#### **Front End Design** 
-<!-- list of pages -->
- 
-#### **Front and Back End Relationship**
-<!-- site plan -->
+#### **Site Plan** 
+A visual plan of the site is shown below. This details all templates/pages in the site and the various paths users can take to navigate through the site
 
-#### **Final Key Design Decisions**
+<img src="docs/structure/site-plan.png" alt="site plan for shoop" width="500"/> 
+
+There are 16 total pages throughout the site. The name and function of each one is details below: 
+
+* **Home/Index**  
+Homepage of the site. Gives a call to action to user to go to browse the collections of shoes available to purchase on the site
+
+* **Browse**  
+Allows user to view all shoes for sale on the site. User can also perform search queries here to find specific shoes according to their needs
+
+* **Shoe Detail**  
+Individual shoe profile. Gives details on the shoe type, description etc. The user can choose to add the shoe to their cart here or view and write reviews for the shoe.
+
+* **View Reviews**  
+Displays all reviews submitted for a particular shoe on the site.
+
+* **Write/Edit Review**  
+Allows the user to write or edit a review for a particular shoe on the site. Only accessible for logged in users. 
+
+* **Login & Register & Sign out**  
+Standard user authentication pages for creating and logging into an account on the site. Functionality is provided by allauth app for django. Templates are custom styled to match the aesthetic of the site.
+
+* **Cart**  
+Shows the current items in the shopping cart for the users' session
+
+* **Checkout Preview**  
+Before the user pays for the items in their cart, they are directed to this screen where they can see an order summary and give their address details
+
+* **Stripe Checkout Session**  
+Stripe hosted page for payed for items in cart
+
+* **Order Confirmation**  
+After payment has been submitted, user is directed to this page which ca=ontains order confirmations details if payment has been successful
 
 ---
 
