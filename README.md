@@ -60,7 +60,7 @@ A visual plan of the site is shown below. This details all templates/pages in th
 
 <img src="docs/structure/site-plan.png" alt="site plan for shoop" width="500"/> 
 
-There are 16 total pages throughout the site. The name and function of each one is details below: 
+There are 15 total pages throughout the site. The name and function of each one is details below: 
 
 * **Home/Index**  
 Homepage of the site. Gives a call to action to user to go to browse the collections of shoes available to purchase on the site
@@ -91,6 +91,15 @@ Stripe hosted page for payed for items in cart
 
 * **Order Confirmation**  
 After payment has been submitted, user is directed to this page which ca=ontains order confirmations details if payment has been successful
+
+* **Sales Banners**  
+Allows superusers to maintain sales banners displayed on the homepage of the site. Superuser can choose to creat, edit or delete sales banners from this page
+
+* **Create Banner**  
+Allows superusers to create a sales banner on the site
+
+* **Edit Banner**  
+Allows superusers to edit sales banner currently displayed on the site
 
 ---
 
