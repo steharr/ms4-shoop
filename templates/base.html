@@ -141,37 +141,37 @@
         </div>
 
     </header>
-
-
-    {% if messages %}
-    <div class="messages-container">
-        <div class="d-flex flex-column">
-            {% for message in messages %}
-            {% with message.level as level %}
-            {% if level == 40 %}
-            {% include 'includes/toasts/toast-error.html' %}
-            {% elif level == 30 %}
-            {% include 'includes/toasts/toast-warning.html' %}
-            {% elif level == 25 %}
-            {% include 'includes/toasts/toast-success.html' %}
-            {% else %}
-            {% include 'includes/toasts/toast-info.html' %}
-            {% endif %}
-            {% endwith %}
-            {% endfor %}
+    <div class="content">
+        {% if messages %}
+        <div class="messages-container">
+            <div class="d-flex flex-column">
+                {% for message in messages %}
+                {% with message.level as level %}
+                {% if level == 40 %}
+                {% include 'includes/toasts/toast-error.html' %}
+                {% elif level == 30 %}
+                {% include 'includes/toasts/toast-warning.html' %}
+                {% elif level == 25 %}
+                {% include 'includes/toasts/toast-success.html' %}
+                {% else %}
+                {% include 'includes/toasts/toast-info.html' %}
+                {% endif %}
+                {% endwith %}
+                {% endfor %}
+            </div>
         </div>
+        {% endif %}
+
+        {% block page_header %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        <footer class="footer bg-secondary">
+            <p>Footer starts here...</p>
+        </footer>
     </div>
-    {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
-
-    <footer class="bg-secondary">
-        <p>Footer starts here...</p>
-    </footer>
 
     {% block postload_js %}
     <script type="text/javascript">

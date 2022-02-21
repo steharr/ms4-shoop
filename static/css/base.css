@@ -2,14 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap');
 
 /* base css rules */
-html {
-    height: 100%;
-}
-
-body {
-    height: 100vh;
-}
-
 h1,
 h2,
 h3,
@@ -19,6 +11,24 @@ h6 {
     font-family: 'Palanquin', sans-serif;
     font-weight: 700;
 }
+
+/* sticky footer */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.content {
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
 
 /* home */
 .home-image-md {
