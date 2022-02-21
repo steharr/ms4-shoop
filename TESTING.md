@@ -3,6 +3,24 @@
 *( -- SECTION INCOMPLETE --)*
 
 ### **Notable Bugs Occurring During Development**
+
+#### **New Balance brand search query not working**
+
+**Description**
+Whenever the user chose to filter a search for shoes with the 'New Balance' brand, they would receive an error message. The search queries were designed to be able to work even when they is no shoes available matching the query i.e. it should work even if there were no New Balance shoes in the database. Running it with Debug=True in my local development environment produced the below message:
+
+<img src="docs/testing/notable-bugs/nb-1.png" alt="new balance search query bug" width="500"/> 
+
+**Root Cause**
+When a search query is made, a js script runs to add search parameters to the url so that they can be extracted from the request in the back end. The script seperates the search query parameter from the search type by splitting the values in the form by underscores (shown below)
+
+<img src="docs/testing/notable-bugs/nb-1-cause.png" alt="new balance search query bug" width="500"/> 
+
+The New Balance brand was stored in the database with a programmatic name of `new_balance`. The underscore in the name was causing the script to make a query with the filter incorrectly set to equal `new`.
+
+**Fix**  
+In order to fix this, I adjusted the *New Balance* brand in the database to have a programmatic name of `new-balance`. For new brands being added to the database, a convention of not including underscores would need to be used in order to avoid this problem occurring again.
+
 ### **HTML Validation**
 In order to validate the quality of my HTML Code, I passed it through the [W3C HTML Validator](https://validator.w3.org/) for all pages of my site to ensure there were no major issues. As there is Django templating logic throughout the html pages, source code was taken from the rendered pages and passed into the validator (Rather than passing it a URI).
 
