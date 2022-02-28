@@ -112,7 +112,16 @@
                                 {% endif %}
                             </ul>
                         </div>
-                        <a href="{% url 'cart' %}" class="btn-cart fs-4"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="{% url 'cart' %}" class="btn-cart fs-4 position-relative">
+                            {% if cart_items %}
+                            <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger"
+                                style="font-size:.5rem;">
+                                {{ cart_items|length }}
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                            {% endif %}
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
                     </div>
                     <!-- Search Bar: Tablet to Desktop -->
                     <div class="d-none d-md-flex me-3">
