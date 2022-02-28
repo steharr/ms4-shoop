@@ -12,6 +12,12 @@ h6 {
     font-weight: 700;
 }
 
+.footer {
+    border-top: 1px solid rgba(224, 217, 217, 0.521);
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
 /* sticky footer */
 html,
 body {
@@ -24,11 +30,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-.footer {
-    margin-top: auto;
-}
-
 
 /* home */
 .home-image-md {
