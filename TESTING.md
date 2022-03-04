@@ -70,11 +70,32 @@ Errors
 * *Duplicate attribute class.*  
 Typo error fixed by removing the duplicate
 
+**Sales Banners Maintenance Page**  
 
+Errors
+* *Element h5 not allowed as child of element button in this context. (Suppressing further errors from this subtree.)*  
+Changed to span
 
+* *Element p not allowed as child of element button in this context. (Suppressing further errors from this subtree.)*  
+Removed from button
 
+**Create Sales Banners Page**  
 
+No errors or warnings
 
+**Edit Sales Banners Page**  
+
+No errors or warnings
+
+**Cart Page**  
+
+Warnings:
+* *The type attribute is unnecessary for JavaScript resources.*  
+Fixed by removing
+
+**Checkout Page**  
+
+No errors or warnings
 
 ### **CSS Validation**
 In order to validate the quality of my CSS Code, I passed it through the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). Results below:
