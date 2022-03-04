@@ -46,6 +46,11 @@ Fixed by reorganising the structure of the navbar dropdown menu on smaller scree
 * *Duplicate attribute class.*  
 Typo error fixed by removing the duplicate
 
+**Browse Page**  
+
+Warnings:
+* *The type attribute is unnecessary for JavaScript resources.*  
+Fixed by removing
 
 
 
