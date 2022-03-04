@@ -22,11 +22,32 @@ The New Balance brand was stored in the database with a programmatic name of `ne
 In order to fix this, I adjusted the *New Balance* brand in the database to have a programmatic name of `new-balance`. For new brands being added to the database, a convention of not including underscores would need to be used in order to avoid this problem occurring again.
 
 ### **HTML Validation**
-In order to validate the quality of my HTML Code, I passed it through the [W3C HTML Validator](https://validator.w3.org/) for all pages of my site to ensure there were no major issues. As there is Django templating logic throughout the html pages, source code was taken from the rendered pages and passed into the validator (Rather than passing it a URI).
+In order to validate the quality of my HTML Code, I passed it through the [W3C HTML Validator](https://validator.w3.org/) for all pages of my site to ensure there were no major issues. As there is Django templating logic throughout the html pages, source code was taken from the rendered pages and passed into the validator (Rather than passing it as a URI).
 
 **Landing Page**  
-Initial results  
-* Errors (7)
+
+Warnings:
+* *The type attribute is unnecessary for JavaScript resources.*  
+Fixed by removing
+
+* *The first occurrence of ID shoop-title was here.*  
+The shoop-title id was only needed for style purposes so fixed by changing the offending id into a class
+
+* *The first occurrence of ID button-addon2 was here.*  
+Was being used by aria attribute purposes so changed the ids so that they were unique in each instance, i.e. button-addon1 and button-addon2
+
+Errors
+* *Duplicate ID*   
+Fixed after addressing related warnings
+
+* *Element div not allowed as child of element ul in this context. (Suppressing further errors from this subtree.)*  
+Fixed by reorganising the structure of the navbar dropdown menu on smaller screens
+
+* *Duplicate attribute class.*  
+Typo error fixed by removing the duplicate
+
+
+
 
 
 

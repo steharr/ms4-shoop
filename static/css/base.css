@@ -37,10 +37,10 @@ body {
     background-size: cover;
 }
 
-#shoop-title {
+.shoop-title {
     font-family: 'Palanquin', sans-serif;
     font-weight: 700;
-    color: #0275d8;
+    color: #0275d8 !important;
 }
 
 .btn-user {

@@ -28,9 +28,9 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/b27a0163d5.js" crossorigin="anonymous"></script>
     <!-- jQuery -->
-    <script type="text/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <!-- Bootstrap Javascript -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
     {% endblock %}
@@ -51,9 +51,8 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="d-flex justify-content-start w-100">
                 <!-- Shoop title: Desktop -->
-                <a id="shoop-title" class="ms-2 navbar-brand d-none d-lg-block" href="{% url 'home' %}"> <img
-                        class="me-1" style="width:2rem;" src="{{ MEDIA_URL }}shoop-logo-bgtransp.png"
-                        alt="shoop-website-logo">
+                <a class="shoop-title ms-2 navbar-brand d-none d-lg-block" href="{% url 'home' %}"> <img class="me-1"
+                        style="width:2rem;" src="{{ MEDIA_URL }}shoop-logo-bgtransp.png" alt="shoop-website-logo">
                     Shoop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -61,25 +60,28 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- Shoop title: Mobile to Tablet -->
-                <a id="shoop-title" class="ms-2 navbar-brand d-block d-lg-none" href="{% url 'home' %}"><img
-                        class="me-1" style="width:2rem;" src="{{ MEDIA_URL }}shoop-logo-bgtransp.png"
+                <a class="shoop-title ms-2 navbar-brand d-block d-lg-none" href="{% url 'home' %}"><img class="me-1"
+                        style="width:2rem;" src="{{ MEDIA_URL }}shoop-logo-bgtransp.png"
                         alt="shoop-website-logo">Shoop</a>
                 <!-- Navigation Menu -->
-                <ul class="d-flex flex-row navbar-nav">
+                <div class="d-flex flex-row">
                     <!-- home -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- by gender -->
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="{% url 'shoes' %}?gender=m">Mens</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="{% url 'shoes' %}?gender=f">Womens</a>
-                        </li>
-                        <!-- all -->
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="{% url 'shoes' %}">All</a>
-                        </li>
-                </ul>
+                        <ul class="navbar-nav">
+                            <!-- by gender -->
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="{% url 'shoes' %}?gender=m">Mens</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="{% url 'shoes' %}?gender=f">Womens</a>
+                            </li>
+                            <!-- all -->
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="{% url 'shoes' %}">All</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
 
                 <div class="d-flex ms-md-auto">
@@ -107,12 +109,10 @@
                                 </li>
                                 {% else %}
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'account_signup' %}"
-                                        class="dropdown-item">Register</a>
+                                    <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'account_login' %}"
-                                        class="dropdown-item">Login</a>
+                                    <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
                                 </li>
                                 {% endif %}
                             </ul>
@@ -133,8 +133,8 @@
                         <form action="{% url 'shoes' %}" method="GET">
                             <div class="input-group">
                                 <input type="text" name="q" class="form-control" placeholder="Search"
-                                    aria-label="Search" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-success" type="submit" id="button-addon2"><i
+                                    aria-label="Search" aria-describedby="button-addon1">
+                                <button class="btn btn-outline-success" type="submit" id="button-addon1"><i
                                         class="fas fa-search"></i></button>
                             </div>
                         </form>
@@ -209,7 +209,7 @@
     </div>
 
     {% block postload_js %}
-    <script type="text/javascript">
+    <script>
         $(".site-notification").fadeOut(5000);
     </script>
     {% endblock %}
