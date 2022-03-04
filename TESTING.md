@@ -52,6 +52,26 @@ Warnings:
 * *The type attribute is unnecessary for JavaScript resources.*  
 Fixed by removing
 
+**Product Detail Page**  
+
+No errors or warnings
+
+**View Reviews Page**  
+
+No errors or warnings
+
+**Login Page**  
+
+No errors or warnings
+
+**Write Review Page**  
+
+Errors
+* *Duplicate attribute class.*  
+Typo error fixed by removing the duplicate
+
+
+
 
 
 
