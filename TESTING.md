@@ -104,7 +104,25 @@ In order to validate the quality of my CSS Code, I passed it through the [W3C CS
 In order to validate the quality of my JavaScript Code, I passed it through the [Jshint linter](https://jshint.com/). Results below:
 
 ### **Python Validation**
-n order to validate the quality of my Python Code, I passed it through a [PEP8 online checker](https://pep8online.com//). Results below:
+In order to validate the quality of my Python Code, I used the [Flake8 tool](https://flake8.pycqa.org/en/latest/#quickstart).
+After installing the tool using pip, I ran the below command in a terminal to get all linting errors associated with the python code of my project 
+
+`python -m flake8 --exclude=__pycache__,.vscode,.venv,migrations,env.py`  
+
+**Note:** I add the --exclude flag to exclude all files containing code not written by me e.g. packages in my virtual environment directory (.venv) or migrations
+
+An overview of the results recieved is displayed in the table below.
+| Problem | Count | Comment |
+| ----------- | ----------- | ----------- |
+| W292 no newline at end of file                              | 8 |   |
+| F401 Package imported but never used                        | 24 |   |
+| E501 line too long                                          | 10 |   |
+| E251 unexpected spaces around keyword / parameter equals    | 3 |   |
+| W291 trailing whitespace                                    | 8 |   |
+| F811 redefinition of unused 'category' from line 1          | 1 |   |
+| F541 f-string is missing placeholders                       | 1 |   |
+| E722 do not use bare 'except'                               | 1 |   |
+| F841 local variable 'e' is assigned to but never used       | 2 |   |
 
 ### **Peformance Tests**
 ### **User Stories Tests**

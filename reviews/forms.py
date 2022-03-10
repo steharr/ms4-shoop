@@ -1,6 +1,5 @@
 from django import forms
 from .models import Review
-from django.contrib.auth.models import User
 
 
 class ReviewForm(forms.ModelForm):

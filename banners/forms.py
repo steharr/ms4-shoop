@@ -12,8 +12,9 @@ class BannerForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['message'].widget.attrs[
             'placeholder'] = 'e.g. Christmas Sale'
-        self.fields['price_threshold'].widget.attrs[
-            'placeholder'] = 'min value needed in order to be eligible for discount'
+        self.fields['price_threshold'].widget.attrs['placeholder'] = (
+            'min value needed'
+            'in order to be eligible for discount')
         self.fields['discount'].widget.attrs['min'] = 0
         self.fields['discount'].widget.attrs['max'] = 30
         self.fields['price_threshold'].widget.attrs['min'] = 0.00

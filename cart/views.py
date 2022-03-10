@@ -38,7 +38,7 @@ def add_to_cart(request, shoe_id):
         request.session['cart'] = cart
         messages.success(request, f"{shoe.name} (Size: {size}) added to cart!")
     else:
-        messages.error(request, f"Error adding to cart, size not valid")
+        messages.error(request, "Error adding to cart, size not valid")
 
     return redirect(redirect_url)
 

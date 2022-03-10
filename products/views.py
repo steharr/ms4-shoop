@@ -1,8 +1,6 @@
-from unicodedata import category
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from .models import Shoe, Brand, Category
-from reviews.models import Review
 from django.db.models import Q, Avg, Count
 from django.contrib import messages
 

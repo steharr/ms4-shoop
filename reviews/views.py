@@ -12,7 +12,7 @@ from .forms import ReviewForm
 
 # read reviews view
 def view_reviews(request, shoe_id):
-    """ 
+    """
     A view to allow users
     to view the reviews for a specific shoe 
     """
@@ -30,9 +30,9 @@ def view_reviews(request, shoe_id):
 # write reviews
 @login_required
 def write_review(request, shoe_id):
-    """ 
+    """
     A view to allow users
-    to write a review for a specific shoe 
+    to write a review for a specific shoe
     """
     # post handler for submitting reviews
     if request.method == "POST":

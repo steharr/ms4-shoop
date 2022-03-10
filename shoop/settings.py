@@ -78,7 +78,8 @@ TEMPLATES = [
         # template directories
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),  # root
-            os.path.join(BASE_DIR, 'templates', 'allauth'),  # custom allauth
+            # custom allauth
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
         'APP_DIRS':
         True,
@@ -86,7 +87,8 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.media',
-                'django.template.context_processors.request',  # needed for allauth
+                # needed for allauth
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
