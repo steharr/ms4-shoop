@@ -124,6 +124,10 @@ An overview of the results recieved is displayed in the table below.
 | E722 do not use bare 'except'                               | 1 |   |
 | F841 local variable 'e' is assigned to but never used       | 2 |   |
 
+The majority of these cases were corrected except for ten shown below:
+
+<img src="docs/testing/linting-python/remaining-flake8-warnings.png" alt="python linting results" width="500"/> 
+
 ### **Peformance Tests**
 ### **User Stories Tests**
 ### **Remaining Unfixed Bugs**
