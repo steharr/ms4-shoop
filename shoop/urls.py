@@ -18,13 +18,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('', include('home.urls')),
-    path('shoes/', include('products.urls')),
-    path('reviews/', include('reviews.urls')),
-    path('cart/', include('cart.urls')),
-    path('checkout/', include('checkout.urls')),
-    path('banners/', include('banners.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        path("accounts/", include("allauth.urls")),
+        path("", include("home.urls")),
+        path("shoes/", include("products.urls")),
+        path("reviews/", include("reviews.urls")),
+        path("cart/", include("cart.urls")),
+        path("checkout/", include("checkout.urls")),
+        path("banners/", include("banners.urls")),
+    ]
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+)
