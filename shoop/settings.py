@@ -173,7 +173,7 @@ USE_TZ = True
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_URL = "/static/"
 # STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-STATIC_ROOT = "https://ms4-shoop.onrender.com/static"
+STATIC_ROOT = "ms4-shoop.onrender.com/static/"
 
 
 # Media files (CSS, JavaScript, Images)
