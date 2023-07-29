@@ -2,14 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap');
 
 /* base css rules */
-html {
-    height: 100%;
-}
-
-body {
-    height: 100vh;
-}
-
 h1,
 h2,
 h3,
@@ -20,16 +12,35 @@ h6 {
     font-weight: 700;
 }
 
+.footer {
+    border-top: 1px solid rgba(224, 217, 217, 0.521);
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
+/* sticky footer */
+html,
+body {
+    height: 110%;
+    margin: 0;
+}
+
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 /* home */
 .home-image-md {
     background-image: url('/media/homepage.jpg');
     background-size: cover;
 }
 
-#shoop-title {
+.shoop-title {
     font-family: 'Palanquin', sans-serif;
     font-weight: 700;
-    color: #0275d8;
+    color: #0275d8 !important;
 }
 
 .btn-user {

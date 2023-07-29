@@ -31,7 +31,7 @@
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img class="shoe-image-preview" src="{{ MEDIA_URL }}/{{ item.shoe.image }}"
+                                <img class="shoe-image-preview" src="{{ MEDIA_URL }}{{ item.shoe.image }}"
                                     alt="{{ shoe.name }}">
                                 <div class="d-flex flex-column">
                                     <h3 class="mb-0 ms-2 text-sm-small">{{ item.shoe.name }}</h3>

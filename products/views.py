@@ -1,9 +1,8 @@
-from unicodedata import category
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from .models import Shoe, Brand, Category
-from reviews.models import Review
 from django.db.models import Q, Avg, Count
+from django.contrib import messages
 
 
 def all_shoes(request):
@@ -21,7 +20,8 @@ def all_shoes(request):
             query = request.GET['q']
             if not query:
                 # error messages -> empty query
-                return redirect(reverse('products'))
+                messages.info(request, "No input text given for search!")
+                return redirect(reverse('shoes'))
             # search for text in name, description or category
             queries = Q(name__icontains=query) | Q(
                 description__icontains=query) | Q(

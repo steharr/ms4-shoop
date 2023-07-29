@@ -28,14 +28,19 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/b27a0163d5.js" crossorigin="anonymous"></script>
     <!-- jQuery -->
-    <script type="text/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <!-- Bootstrap Javascript -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
     {% endblock %}
 
     {% block extra_js %}
+    {% endblock %}
+
+    {% block favicon %}
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ MEDIA_URL }}favicon.ico" type="image/x-icon" />
     {% endblock %}
 
     <title>Shoop</title>
@@ -46,9 +51,8 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="d-flex justify-content-start w-100">
                 <!-- Shoop title: Desktop -->
-                <a id="shoop-title" class="ms-2 navbar-brand d-none d-lg-block" href="{% url 'home' %}"> <img
-                        class="me-1" style="width:2rem;" src="{{ MEDIA_URL }}/shoop-logo-bgtransp.png"
-                        alt="shoop-website-logo">
+                <a class="shoop-title ms-2 navbar-brand d-none d-lg-block" href="{% url 'home' %}"> <img class="me-1"
+                        style="width:2rem;" src="{{ MEDIA_URL }}shoop-logo-bgtransp.png" alt="shoop-website-logo">
                     Shoop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -56,25 +60,28 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- Shoop title: Mobile to Tablet -->
-                <a id="shoop-title" class="ms-2 navbar-brand d-block d-lg-none" href="{% url 'home' %}"><img
-                        class="me-1" style="width:2rem;" src="{{ MEDIA_URL }}/shoop-logo-bgtransp.png"
+                <a class="shoop-title ms-2 navbar-brand d-block d-lg-none" href="{% url 'home' %}"><img class="me-1"
+                        style="width:2rem;" src="{{ MEDIA_URL }}shoop-logo-bgtransp.png"
                         alt="shoop-website-logo">Shoop</a>
                 <!-- Navigation Menu -->
-                <ul class="d-flex flex-row navbar-nav">
+                <div class="d-flex flex-row">
                     <!-- home -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- by gender -->
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="{% url 'shoes' %}?gender=m">Mens</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="{% url 'shoes' %}?gender=f">Womens</a>
-                        </li>
-                        <!-- all -->
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="{% url 'shoes' %}">All</a>
-                        </li>
-                </ul>
+                        <ul class="navbar-nav">
+                            <!-- by gender -->
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="{% url 'shoes' %}?gender=m">Mens</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="{% url 'shoes' %}?gender=f">Womens</a>
+                            </li>
+                            <!-- all -->
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="{% url 'shoes' %}">All</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
 
                 <div class="d-flex ms-md-auto">
@@ -97,30 +104,37 @@
                                 </li>
                                 {% endif %}
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'account_logout' %}" class="dropdown-item">Log
+                                    <a class="dropdown-item" href="{% url 'account_logout' %}">Log
                                         Out</a>
                                 </li>
                                 {% else %}
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'account_signup' %}"
-                                        class="dropdown-item">Register</a>
+                                    <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'account_login' %}"
-                                        class="dropdown-item">Login</a>
+                                    <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
                                 </li>
                                 {% endif %}
                             </ul>
                         </div>
-                        <a href="{% url 'cart' %}" class="btn-cart fs-4"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="{% url 'cart' %}" class="btn-cart fs-4 position-relative">
+                            {% if cart_items %}
+                            <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger"
+                                style="font-size:.5rem;">
+                                {{ cart_items|length }}
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                            {% endif %}
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
                     </div>
                     <!-- Search Bar: Tablet to Desktop -->
                     <div class="d-none d-md-flex me-3">
                         <form action="{% url 'shoes' %}" method="GET">
                             <div class="input-group">
                                 <input type="text" name="q" class="form-control" placeholder="Search"
-                                    aria-label="Search" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-success" type="submit" id="button-addon2"><i
+                                    aria-label="Search" aria-describedby="button-addon1">
+                                <button class="btn btn-outline-success" type="submit" id="button-addon1"><i
                                         class="fas fa-search"></i></button>
                             </div>
                         </form>
@@ -141,40 +155,61 @@
         </div>
 
     </header>
-
-
-    {% if messages %}
-    <div class="messages-container">
-        <div class="d-flex flex-column">
-            {% for message in messages %}
-            {% with message.level as level %}
-            {% if level == 40 %}
-            {% include 'includes/toasts/toast-error.html' %}
-            {% elif level == 30 %}
-            {% include 'includes/toasts/toast-warning.html' %}
-            {% elif level == 25 %}
-            {% include 'includes/toasts/toast-success.html' %}
-            {% else %}
-            {% include 'includes/toasts/toast-info.html' %}
-            {% endif %}
-            {% endwith %}
-            {% endfor %}
+    <div class="content">
+        {% if messages %}
+        <div class="messages-container">
+            <div class="d-flex flex-column">
+                {% for message in messages %}
+                {% with message.level as level %}
+                {% if level == 40 %}
+                {% include 'includes/toasts/toast-error.html' %}
+                {% elif level == 30 %}
+                {% include 'includes/toasts/toast-warning.html' %}
+                {% elif level == 25 %}
+                {% include 'includes/toasts/toast-success.html' %}
+                {% else %}
+                {% include 'includes/toasts/toast-info.html' %}
+                {% endif %}
+                {% endwith %}
+                {% endfor %}
+            </div>
         </div>
+        {% endif %}
+
+        {% block page_header %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        <footer class="footer bg-light">
+            <div class="d-flex">
+                <div class="col text-center d-flex flex-column">
+                    <h6>Contact Us</h6>
+                    <span>75 Business Park</span>
+                    <span>Shoeland</span>
+                    <span>Dublin 12</span>
+                    <span>+555 55 555 55</span>
+                </div>
+                <div class="col text-center d-flex flex-column">
+                    <h6>Our Socials</h6>
+                    <a href="https://www.facebook.com/">Facebook</a>
+                    <a href="https://twitter.com/">Twitter</a>
+                    <a href="https://www.instagram.com/">Instagram</a>
+                </div>
+            </div>
+            <div class="col text-center fs-2">
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-paypal"></i>
+                <i class="fab fa-cc-stripe"></i>
+                <i class="fab fa-cc-apple-pay"></i>
+            </div>
+        </footer>
     </div>
-    {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
-
-    <footer class="bg-secondary">
-        <p>Footer starts here...</p>
-    </footer>
 
     {% block postload_js %}
-    <script type="text/javascript">
+    <script>
         $(".site-notification").fadeOut(5000);
     </script>
     {% endblock %}

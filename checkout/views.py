@@ -5,7 +5,6 @@ from django.conf import settings
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Shoe
-from django.views.generic.base import TemplateView
 
 import stripe
 import json
@@ -14,7 +13,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def checkout_preview(request):
-    """ 
+    """
     Shows order summary &
     provides form for delivery details
     """
@@ -98,8 +97,9 @@ def create_checkout_session(request):
                             'cart': json.dumps(cart),
                         },
                     },
-                    success_url="http://{}{}?session_id={{CHECKOUT_SESSION_ID}}"
-                    .format(
+                    success_url=(
+                        "http://{}{}?session_id={{CHECKOUT_SESSION_ID}}"
+                    ).format(
                         host,
                         reverse('payment_success'),
                     ),

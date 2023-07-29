@@ -17,31 +17,34 @@
 
                 <!-- New Banner -->
                 <a href="{% url 'create_banner' %}" class="list-group-item list-group-item-action" aria-current="true">
-                    <h5><u>New Banner</u></h5>
-                    <p>Create a new sales banner for the Shoop site homepage
-                        <br><span class="badge rounded-pill bg-info text-dark">
-                            <strong>Note:</strong> New banner will replace existing one
-                        </span>
-                    </p>
+                    <span><strong><u>New Banner</u></strong></span>
+                    <br>
+                    Create a new sales banner for the Shoop site homepage
+                    <br><span class="badge rounded-pill bg-info text-dark">
+                        <strong>Note:</strong> New banner will replace existing one
+                    </span>
+
                 </a>
 
                 <!-- Edit Banner -->
                 <a href="{% url 'edit_banner' %}" class="list-group-item list-group-item-action">
-                    <h5><u>Edit Banner</u></h5>
-                    <p>Edit the current sales banner on the site</p>
+                    <span><strong><u>Edit Banner</u></strong></span>
+                    <br>
+                    Edit the current sales banner on the site
                 </a>
 
 
                 <!-- Delete Banner -->
                 <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal"
                     data-bs-target="#deleteModal">
-                    <h5><u>Delete Banner</u></h5>
-                    <p>Delete the banner on the site
-                        <br>
-                        <span class="badge rounded-pill bg-warning text-dark">
-                            <strong>Note:</strong> This action is irreversible
-                        </span>
-                    </p>
+                    <span><strong><u>Delete Banner</u></strong></span>
+                    <br>
+                    Delete the banner on the site
+                    <br>
+                    <span class="badge rounded-pill bg-warning text-dark">
+                        <strong>Note:</strong> This action is irreversible
+                    </span>
+
                 </button>
                 <!-- Modal -->
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"

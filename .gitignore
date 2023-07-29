@@ -5,3 +5,4 @@ env.py
 *.pyc
 **__pycache__/
 .vscode
+media/nike-airmax90.png
